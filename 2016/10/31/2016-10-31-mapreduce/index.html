@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        转-MapReduce原理与设计思想 · Jiang&#39;s Blog
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170912" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">转-MapReduce原理与设计思想</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Jiang's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            转-MapReduce原理与设计思想
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = wp>wp</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = cite>cite</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = algorithm>algorithm</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = mapreduce>mapreduce</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2016/10/31</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <blockquote>
+<p>成为了保研猪后，突然发现目前情况就是闲得蛋疼，于是乎寻思着填补这样的空虚，我可不是惰怠呀。</p>
+<p>于是乎，成立这样的一个分类，把看到的有趣的文章给贴过来，让我的网站也变得有趣起来（笑）</p>
+</blockquote>
+<p>原文：<a href="https://www.philipithomas.com/simple-mapreduce/" target="_blank" rel="external">https://www.philipithomas.com/simple-mapreduce/</a></p>
+<p></p><h1>简单解释 MapReduce 算法</h1><p></p>
+<p></p><h3>一个有趣的例子</h3><br>你想数出一摞牌中有多少张黑桃。直观方式是一张一张检查并且数出有多少张是黑桃？<p></p>
+<p><img class="alignnone" src="http://ww2.sinaimg.cn/mw690/005RM8OMgw1emyiwfmehfj30fa0a076y.jpg" width="550" height="360"></p>
+<p>MapReduce方法则是：</p>
+<ol><br>     <li>给在座的所有玩家中分配这摞牌</li><br>     <li>让每个玩家数自己手中的牌有几张是黑桃，然后把这个数目汇报给你</li><br>     <li>你把所有玩家告诉你的数字加起来，得到最后的结论</li><br></ol>
+
+<p></p><h3>拆分</h3><br>MapReduce合并了两种经典函数：<p></p>
+<p><ul><br>     <li><strong>映射（Mapping）</strong>对集合里的每个目标应用同一个操作。即，如果你想把表单里每个单元格乘以二，那么把这个函数单独地应用在每个单元格上的操作就属于mapping。</li><br>     <li><strong>化简（Reducing ）</strong>遍历集合中的元素来返回一个综合的结果。即，输出表单里一列数字的和这个任务属于reducing。</li><br></ul></p>
+<p></p><h3>重新审视上面的例子</h3><br>重新审视我们原来那个分散纸牌的例子，我们有MapReduce数据分析的基本方法。友情提示：这不是个严谨的例子。在这个例子里，人代表计算机，因为他们同时工作，所以他们是个<strong>集群</strong>。在大多数实际应用中，我们假设数据已经在每台计算机上了 – 也就是说把牌分发出去并不是MapReduce的一步。（事实上，在计算机集群中如何存储文件是Hadoop的真正核心。）<p></p>
+<p>通过把牌分给多个玩家并且让他们各自数数，你就在<strong>并行</strong>执行运算，因为每个玩家都在同时计数。这同时把这项工作变成了<strong>分布式的</strong>，因为多个不同的人在解决同一个问题的过程中并不需要知道他们的邻居在干什么。</p>
+<p>通过告诉每个人去数数，你对一项检查每张牌的任务进行了映射。 你不会让他们把黑桃牌递给你，而是让他们把你想要的东西化简为一个数字。</p>
+<p>另外一个有意思的情况是牌分配得有多均匀。MapReduce假设数据是<strong>洗过的</strong>（<strong>shuffled</strong>）- 如果所有黑桃都分到了一个人手上，那他数牌的过程可能比其他人要慢很多。</p>
+<p>如果有足够的人的话，问一些更有趣的问题就相当简单了 – 比如“一摞牌的平均值（二十一点算法）是什么”。你可以通过合并“所有牌的值的和是什么”及“我们有多少张牌”这两个问题来得到答案。用这个和除以牌的张数就得到了平均值。</p>
+<p>MapReduce算法的机制要远比这复杂得多，但是主体思想是一致的 – 通过分散计算来分析大量数据。无论是Facebook、NASA，还是小创业公司，MapReduce都是目前分析互联网级别数据的主流方法。</p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2016/11/23/2016-11-23-kaggle/" title= Kaggle网站上的说明 >
+                    <span>Next Post</span>
+                    <span>Kaggle网站上的说明</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2016/06/24/2016-06-24-hello-world/" title= 世界，你好！ >
+                    <span>Previous Post</span>
+                    <span>世界，你好！</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
+    
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    
+
+<!-- City版安装代码已完成 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:jjkjjk333@sina.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/jjkislele" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//weibo.com/jjkislele" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+        <span
+            id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 9 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href= "/2017/09/25/2017-09-25-new-blog/" >新的开始</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2017/08/10/2017-08-10-goodbye-wp/" >告别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2017/08/04/2017-08-04-python-env-intro/" >Python环境的搭建</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2017/07/11/2017-07-11-cpp-inline-func/" >转-Cpp内联函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2017/07/08/2017-07-08-vs2015/" >转-vs2015常用快捷键</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2017/05/02/2017-05-02-dissertation/" >毕业论文格式该咋搞？</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2016/11/23/2016-11-23-kaggle/" >Kaggle网站上的说明</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span><a class="archive-post-title" href= "/2016/10/31/2016-10-31-mapreduce/" >转-MapReduce原理与设计思想</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2016/06/24/2016-06-24-hello-world/" >世界，你好！</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">diary</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">wp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">cite</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">mapreduce</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">func</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
