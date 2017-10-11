@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Jiang&#39;s Blog
+        review-MSSR2017 · Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">review-MSSR2017</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Jiang's Blog.</a>
 </header>
@@ -80,76 +91,122 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            review-MSSR2017
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/10/11</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/07/11/2017-07-11-cpp-inline-func/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>转-Cpp内联函数</span>
-                    </h2>
-                <div class="abstract-content">
-                    内联函数
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="VNect-Real-time-3D-Human-Pose-Estimation-with-a-Single-RGB-Camera"><a href="#VNect-Real-time-3D-Human-Pose-Estimation-with-a-Single-RGB-Camera" class="headerlink" title="VNect: Real-time 3D Human Pose Estimation with a Single RGB Camera"></a>VNect: Real-time 3D Human Pose Estimation with a Single RGB Camera</h1><blockquote>
+<p>Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad Shafiei, Hans-Peter Seidel, Weipeng Xu, Dan Casas, and Christian Theobalt. 2017. VNect: real-time 3D human pose estimation with a single RGB camera. ACM Trans. Graph. 36, 4, Article 44 (July 2017), 14 pages. DOI: <a href="https://doi.org/10.1145/3072959.3073596" target="_blank" rel="external">https://doi.org/10.1145/3072959.3073596</a></p>
+</blockquote>
+<p>从准确度（accuracy is quantitatively on par）上看，比离线[3]3d单目rgb姿态评价算法（the best offline 3D monocular RGB pose estimation methods）更好（特别是末端位置end effector positions）；与单目rgb-d（rgb深度[1]）方法效果持平，或有时会更好。</p>
+<h2 id="创新点："><a href="#创新点：" class="headerlink" title="创新点："></a>创新点：</h2><p>  ● 设备简单。使用普通相机（普通甚至低分辨率视频流输入）就可以进行分析，比其他3d相机便宜、分辨率高。</p>
+<p>  ● 效果好。较rgb-d，较offline 3D monocular RGB pose（特别是end effector positions）。</p>
+<p>  ● 适用性广。室外（rgb-d受室外阳光形象，效果变差），低分辨率，输入图像不需要“精细”裁剪（no-cropped）。</p>
+<p>  ● 实时（30hz[4]）且精确。速度快，用50层浅层cnn；精确，新型的全卷积核[2]。</p>
+<p>？monocular pose reconstruction</p>
+<h2 id="算法："><a href="#算法：" class="headerlink" title="算法："></a>算法：</h2><h3 id="1、CNN-Pose-Regression："><a href="#1、CNN-Pose-Regression：" class="headerlink" title="1、CNN Pose Regression："></a>1、CNN Pose Regression：</h3><p>using convolutional neural networks (CNNs) [Mehta et al. 2016; Pavlakos et al. 2016]，同时生成2d和3d joint positions ，放弃了资源消耗大的Bounding Box Computations（边界盒）。</p>
+<h3 id="2、Kinematic-Skeleton-Fitting"><a href="#2、Kinematic-Skeleton-Fitting" class="headerlink" title="2、Kinematic Skeleton Fitting:"></a>2、Kinematic Skeleton Fitting:</h3><p>使用Model-based kinematic skeleton fitting来实时修正前者（CNNs）预测出的运动骨骼连接节点（joint positions），保证预测运动的一致性。</p>
+<h3 id="3、Skeleton-Initialization-Optional"><a href="#3、Skeleton-Initialization-Optional" class="headerlink" title="3、Skeleton Initialization (Optional):"></a>3、Skeleton Initialization (Optional):</h3><p>事先提供被测人的身高，作为规格参考，降低图像重构时的歧义（ambiguous）。对于kinematic skeleton，平均开始的一段时间里的CNN预测（average CNN predictions for a few frames at the beginning）。</p>
+<h2 id="难点："><a href="#难点：" class="headerlink" title="难点："></a>难点：</h2><p>实时且精确。</p>
+<h3 id="1、实时："><a href="#1、实时：" class="headerlink" title="1、实时："></a>1、实时：</h3><p>harder to run in real-time, partly due to additional preprocessing steps such as bounding box extraction。现有方法需要“精细”修剪的图片（tight crops at a fixed resolution，如由边界盒算法修剪，耗时大）</p>
+<h3 id="2、精确："><a href="#2、精确：" class="headerlink" title="2、精确："></a>2、精确：</h3><p>无法准确预测人体关节的范围（extent of articulation）</p>
+<h2 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h2><h3 id="1、CNN-Pose-Regression"><a href="#1、CNN-Pose-Regression" class="headerlink" title="1、CNN Pose Regression"></a>1、CNN Pose Regression</h3><p>上述解决方法：本文创新的，将2d热图（heatmap）映射到3d，每个节点j都有3个方向映射（location-maps）Xj / Yj / Zj，捕捉相对骨盆（root-relative / pelvis）的j的三维位置xj / yj / zj，以此完成2d到3d的转换。</p>
+<p>网络使用，ResNet50 network architecture of He et al. [2016]。</p>
+<p>预测出的是，2d热图、3d方位图。</p>
+<p>训练网络，使用训练集（2D pose estimation、heatmap）MPII [Andriluka et al. 2014] and LSP [Johnson and Everingham 2010, 2011]、（3D pose）MPI-INF- 3DHP [Mehta et al. 2016] and Human3.6m [Ionescu et al. 2014b]。</p>
+<p>不需要“精细”裁剪，Bounding Box Tracker，The BB tracker starts with (slow) multi-scale predictions on the full image for the first few frames, and hones in on the person in the image making use of the BB-agnostic predictions from the fully convolutional network.算法开始时，先按照BB裁剪出含有目标物体的边框，后BB按设定比例逐帧移动、放大，即后续步骤中并未使用BB算法，加快了整个程序的速度以达到实时的目的。</p>
+<h3 id="2、Kinematic-Skeleton-Fitting-1"><a href="#2、Kinematic-Skeleton-Fitting-1" class="headerlink" title="2、Kinematic Skeleton Fitting"></a>2、Kinematic Skeleton Fitting</h3><p>修正预测，降低抖动</p>
+<p>[1]RGB-D相机</p>
+<p><a href="http://blog.csdn.net/myarrow/article/details/52678020" target="_blank" rel="external">http://blog.csdn.net/myarrow/article/details/52678020</a></p>
+<p>  ● Mircowaves</p>
+<p>  ● Light Waves</p>
+<pre><code>○ 双目摄像头 (Stereo Camera)
 
-Tip： 只有当函数只有 10 行甚至更少时才将其定义为内联函数。
-     定义
+○ TOF  测量发射与反射红外(IR)信号的相位延迟
 
-当函数被声明为内联函数之后, 编译器会将其内联展开, 而不是按通常的函数调用机制进行调用。
-     优点
+○ Structured light
 
-当函数体比较小的时候, 内联该函数可以令目标代码更加高效。 对于存取函数以及其它函数体比较短, 性能关键的函数, 鼓励使用内联。
-     缺点
+○ Laser Scan
+</code></pre><p>  ● Ultrasonic Waves</p>
+<p>[2]Fully Convolutional Networks</p>
+<p><a href="http://blog.csdn.net/fate_fjh/article/details/53446630" target="_blank" rel="external">http://blog.csdn.net/fate_fjh/article/details/53446630</a></p>
+<p>[3]离线计算</p>
+<p>在计算开始前已知所有输入数据，输入数据不会产生变化，且在解决一个问题后就要立即得出结果的前提下进行的计算。</p>
+<p>[4]刷新率与帧数</p>
+<p>显示器的刷新率30Hz：显示1秒钟屏幕重复一个周期刷新30次<br>游戏的帧数30fps：在1秒钟显卡生成传输30个固定画面给显示器</p>
 
-滥用内联将导致程序变慢。内联可能使目标代码量或增或减, 这取决于内联函数的大小。内联非常短小的存取函数通常会减少代码大小, 但内联一个相当大的函数将戏剧性的增加代码大小。现代处理器由于更好的利用了指令缓存, 小巧的代码往往执行更快。
-  ...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2017/09/25/2017-09-25-new-blog/" title= 新的开始 >
+                    <span>Previous Post</span>
+                    <span>新的开始</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
     
-        <a class="post-tag" href="javascript:void(0);" data-href = cite>cite</a>
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
     
-        <a class="post-tag" href="javascript:void(0);" data-href = wp>wp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = intro>intro</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = cpp>cpp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = func>func</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/07/11</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+
+<!-- City版安装代码已完成 -->
 </main>
             <!-- profile -->
             
