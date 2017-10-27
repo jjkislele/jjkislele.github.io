@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        post · Jiang&#39;s Blog
+        review-SWC2016 · Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Jiang&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">post</a>
+                <a href="#" class="post-name">review-SWC2016</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            post
+            review-SWC2016
             <!-- 404 -->
             
         </h1>
@@ -164,7 +164,8 @@
 <p>购买记录输入FNN，使用FNN模拟CF模型，网络的激励函数选用ReLU[2]。</p>
 <p>综合DRNN与FNN的结果得到每个商品在某页面（state）下的购买可能性，其中f为损失函数softmax。根据该可能性排序，得出推荐列表。</p>
 <p>神经网络DRNN、FNN模型优化：</p>
-<p>使用随机梯度下降法（Stochastic Gradient Descent，SGD）向后投影（BackProjection）调整权重与偏差。<br>下面是算法各步的详细说明。</p>
+<p>使用随机梯度下降法（Stochastic Gradient Descent，SGD）向后投影（BackProjection）调整权重与偏差。</p>
+<p>下面是算法各步的详细说明。</p>
 <pre><code>a. 建立DRNN
 </code></pre><p>会话记录输入DRNN，会话记录中的页面请求记录会被向量化，成为向量V。输入层的输入节点接收一系列向量V，即每一个节点接收一个向量，每个节点对应在该时间点下用户访问的页面。输入节点随访问页面的增多而增多（如果将DRNN展开看）。其中，输入节点数量为有限值，不同于传统RNN因节点数量的限制而抛弃历史记录（old states），本文的DRNN使用历史节点（the history state）保存历史记录。</p>
 <p>历史节点作为DRNN在过去浏览记录的修正，其具体方法是：将需要剔除的那部分页面请求记录向量Vold按（浏览时长/浏览总时间）之比加权求和。</p>
@@ -417,32 +418,6 @@
     
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     <div class="total-archive"> Total : 12 </div>
     
     <div class="post-archive">
@@ -455,7 +430,7 @@
     
     
         <li class="archive-post-item">
-            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2017/10/27/2017-10-27-review-SWC2016/" >post</a>
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2017/10/27/2017-10-27-review-SWC2016/" >review-SWC2016</a>
         </li>
     
     
@@ -541,23 +516,23 @@
     
         <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">func</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">review</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">TOG</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">SIGIR</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">recommendation</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">TOG</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">ICDE</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">python</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
