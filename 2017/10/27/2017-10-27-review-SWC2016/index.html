@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Python环境的搭建 · Jiang&#39;s Blog
+        post · Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -81,7 +81,7 @@
                 <a href="/" >Jiang&#39;s Blog.</a>
             </div>
             <div class="post-title">
-                <a href="#" class="post-name">Python环境的搭建</a>
+                <a href="#" class="post-name">post</a>
             </div>
     </div>
     
@@ -102,7 +102,7 @@
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Python环境的搭建
+            post
             <!-- 404 -->
             
         </h1>
@@ -120,17 +120,17 @@
             
                 <div class= post-intro-tags >
     
-        <a class="post-tag" href="javascript:void(0);" data-href = wp>wp</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-href = intro>intro</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = recommendation>recommendation</a>
     
-        <a class="post-tag" href="javascript:void(0);" data-href = python>python</a>
+        <a class="post-tag" href="javascript:void(0);" data-href = ICDE>ICDE</a>
     
 </div>
             
             <div class="post-intro-meta">
                 <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/08/04</span>
+                <span class="post-intro-time">2017/10/27</span>
             </div>
         
     </div>
@@ -138,55 +138,95 @@
         <div class="container">
             <main class="main post-page">
     <article class="article-entry">
-        <h1 id="最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。"><a href="#最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。" class="headerlink" title="最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。"></a>最最重要的话：千千万万<strong>不要</strong>去搜某个软件然后在<strong>某软件“中心”</strong>一键下载。</h1><p><img class="alignnone size-full wp-image-201" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py1.jpg" alt="py1" width="554" height="213"></p>
-<p>一是怕这个软件“中心”会给你加点其它你意想不到的“全家桶”；二是你控制不了版本，书上要你用2.x还是3.x，这是有区别的，书里面提到的包，有可能在3.x里能运行，在2.x就不能运行了。这样下载真心很，不要这么搞。</p>
-<h1>一、下载与安装</h1>
-
-<h2>1.1 哪里的安装包</h2>
-
-<p>还是用某度搜下python，这么大的org标识，python.org点进去好不好。</p>
-<p><img class="alignnone size-full wp-image-202" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py2.jpg" alt="py2" width="547" height="119"></p>
-<p>进入页面后点download直接到下载页，2.x和3.x随你下载啊。</p>
-<p><img class="alignnone size-full wp-image-203" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py3.jpg" alt="py3" width="499" height="251"></p>
-<blockquote>
-<p>if you want to use a specific third party package or utility that doesn’t yet have a released version that is compatible with Python 3, and porting that package is a non-trivial task, you may choose to use Python 2 in order to retain access to that package.</p>
+        <h1 id="Personal-Recommendation-Using-Deep-Recurrent-Neural-Networks-in-NetEase"><a href="#Personal-Recommendation-Using-Deep-Recurrent-Neural-Networks-in-NetEase" class="headerlink" title="Personal Recommendation Using Deep Recurrent Neural Networks in NetEase"></a>Personal Recommendation Using Deep Recurrent Neural Networks in NetEase</h1><blockquote>
+<p>Wu S, Ren W, Yu C, et al. Personal recommendation using deep recurrent neural networks in NetEase[C]// IEEE, International Conference on Data Engineering. IEEE, 2016:1218-1229.</p>
 </blockquote>
-<p>在这个页面往下拉就可以下载到更加“精确”的版本，例如<a href="https://www.python.org/downloads/release/python-2713/" target="_blank" rel="external">Python 2.7.13</a>，<a href="https://www.python.org/downloads/release/python-351/" target="_blank" rel="external">Python 3.5.1</a>等等等等。</p>
-<p>正确下载好后，双击安装就可以了。</p>
-<h2>1.2 环境变量</h2>
-
-<p>还有一步，添加环境变量，意思就是告诉系统你装了python。或许在低版本程序里你需要做这样的动作，我没弄明白这里的python需不需要添加，不过还是加上，以前在没加的时候安装第三方包好像会出错（似乎是npm）。</p>
-<p>“控制面板\所有控制面板项\系统”的高级系统设置里面的环境变量</p>
-<p><img class="alignnone size-full wp-image-205" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py4.jpg" alt="py4" width="647" height="532"></p>
-<p>在PATH里面加入你安装的python的目录就好，注意在PATH变量值的后面添加，并用英文;隔开。</p>
-<p><img class="alignnone size-full wp-image-206" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py5.jpg" alt="py5" width="457" height="498"></p>
-<p>第一章就结束了，这个时候你的python应该就已经ready to rock了，不过python强大之处，不仅在于它简练的语法，探索式的编程方式，还在于它开放的无穷无尽的第三方库 <em>third-party library </em>，用于数据处理的什么panda啊，<em>sci</em>py啊，scikt-learn啊，这些都是我以前使用过的包，实用。</p>
-<h1>二、第三方包的安装</h1>
-
-<p>由于城墙的缘故，用ez-install或者pip很容易超时，所以就必须需要国内镜像仓库，或者在什么git啊SourceForge啊把源码包下载下来自己在本地装。</p>
-<h2>2.1 pip+国内镜像</h2>
-
-<p><a href="http://pypi.douban.com/simple/" target="_blank" rel="external">http://pypi.douban.com/simple/</a> 豆瓣<br><a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="external">http://mirrors.aliyun.com/pypi/simple/</a> 阿里<br><a href="http://pypi.hustunique.com/simple/" target="_blank" rel="external">http://pypi.hustunique.com/simple/</a> 华中理工大学<br><a href="http://pypi.sdutlinux.org/simple/" target="_blank" rel="external">http://pypi.sdutlinux.org/simple/</a> 山东理工大学<br><a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="external">http://pypi.mirrors.ustc.edu.cn/simple/</a> 中国科学技术大学<br><a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="external">https://pypi.tuna.tsinghua.edu.cn/simple</a> 清华</p>
-<h2>2.2 pip+本地安装</h2>
-
-<p>直接 pip -install 包名就好了。</p>
+<p><img src="http://images2015.cnblogs.com/blog/533521/201606/533521-20160620235744678-1220338012.png" alt=""></p>
+<h2 id="主题"><a href="#主题" class="headerlink" title="主题"></a>主题</h2><p>传统协同过滤CF（Collaborative Filtering）推荐系统，仅分析用户已购买的商品，从中产生荐购单，且这些推荐受多数用户欢迎（CF的原理所致），故对于单一用户无法做出个性化推荐。</p>
+<p>本文通过收集当前会话（指用户进入商场页面到离开的过程）中的浏览历史与用户购买记录建立实时推荐系统。其目的在于，缩短用户</p>
+<p><em>“商场主页-&gt;商品详情页1-&gt;商品详情页2-&gt;……-&gt;商品详情页n-&gt;付款页”</em></p>
+<p>这一过程（减少浏览页面数量，比如从详情页1到详情页2后，在详情页2中就看到系统给用户推荐的商品是用户想要买的，因此该用户就直接付款，不再继续浏览其他页面），使商品推荐会随页面的改变而改变，进而更有针对性。</p>
+<pre><code>a. 创新点
+</code></pre><ol>
+<li><p>针对庞大数据使用levelDB、MongoDB存储。</p>
+</li>
+<li><p>用户行为会实时影响系统的推荐结果。</p>
+</li>
+<li><p>使用前馈网络（FNN）收集用户信息与购买历史，模拟CF算法，以此提高DRNN的预测准确度。</p>
+</li>
+<li><p>模型代码自动生成，使用遗传算法优化模型，自动确定网络参数（节点数、层数、神经元等）。</p>
+</li>
+<li><p>引入a history state，解决传统RNN的输入节点一旦满了后需要删除旧节点而失去历史信息的问题。</p>
+</li>
+</ol>
+<h2 id="核心算法"><a href="#核心算法" class="headerlink" title="核心算法"></a>核心算法</h2><p>用户行为被分为：页面请求（对应潜在购买的商品的特征，如请求的页面是男装，则代表用户希望购买男装，因此推荐系统应罗列男装）、购买记录。</p>
+<p>页面请求输入DRNN，输出购买位于该页面下会购买商品的概率，其中，页面请求会按时间先后顺序以30分钟时长打包成会话记录（session document），会话记录会按M件为一批分批输入DRNN。</p>
+<p>购买记录输入FNN，使用FNN模拟CF模型，网络的激励函数选用ReLU[2]。</p>
+<p>综合DRNN与FNN的结果得到每个商品在某页面（state）下的购买可能性，其中f为损失函数softmax。根据该可能性排序，得出推荐列表。</p>
+<p>神经网络DRNN、FNN模型优化：</p>
+<p>使用随机梯度下降法（Stochastic Gradient Descent，SGD）向后投影（BackProjection）调整权重与偏差。<br>下面是算法各步的详细说明。</p>
+<pre><code>a. 建立DRNN
+</code></pre><p>会话记录输入DRNN，会话记录中的页面请求记录会被向量化，成为向量V。输入层的输入节点接收一系列向量V，即每一个节点接收一个向量，每个节点对应在该时间点下用户访问的页面。输入节点随访问页面的增多而增多（如果将DRNN展开看）。其中，输入节点数量为有限值，不同于传统RNN因节点数量的限制而抛弃历史记录（old states），本文的DRNN使用历史节点（the history state）保存历史记录。</p>
+<p>历史节点作为DRNN在过去浏览记录的修正，其具体方法是：将需要剔除的那部分页面请求记录向量Vold按（浏览时长/浏览总时间）之比加权求和。</p>
+<p>节点数的选取、网络隐含层层数、每层神经元数使用遗传算法自动生成。</p>
+<pre><code>b. 建立FNN模拟CF
+</code></pre><p>FNN的输入量是用户购买商品记录矩阵，该矩阵应为</p>
+<table>
+<thead>
+<tr>
+<th>Item1</th>
+<th>Item2</th>
+<th>…</th>
+<th>ItemN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User1</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>User2</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>…</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>UserN</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>每个用户对应一个输入节点，输出所有用户购买商品的可能性。</p>
+<p>节点数的选取、网络隐含层层数、每层神经元数使用遗传算法自动生成。</p>
+<pre><code>c. 遗传算法优化模型
+</code></pre><p>输入神经网络的设置参数（学习率、层数、神经元数等），随后产生种群，分为奇偶两个种群，产生三个随机数以确定在阈值pm、pc下奇偶种群的动作（变异还是交叉繁殖）。</p>
+<p>适应度计算式为 fit=accuracy+1/(1+loss)</p>
+<h2 id="感悟"><a href="#感悟" class="headerlink" title="感悟"></a>感悟</h2><p>这篇论文是网易写的，文中的推荐系统是运用在考拉海购网站上，其实用性不言而喻。</p>
+<p>论文阅读难度较上篇更难，涉及的理论更多。由于我并不了解DRNN，所以通过网络查阅了相关资料，或许会影响我对这篇文章的理解。RNN、FNN使用的参数优化的方法是向后反馈，相关资料[1]</p>
+<p>有“BackProjection”与“BackPropagation”这两种解释，我不确定这两个是否就是同一概念。</p>
+<p>本文只提供了优化DRNN模型所用到的遗传算法的大致思路，遗传算法中的交叉繁殖与个体变异的方法并没有给出，且FNN是如何优化的也未提及，按论文算法，FNN中输入的应为训练集中所有用户购买过的商品作为特征向量，但这个向量的大小该是多少论文并没说，这些应该就是整个推荐系统技术的核心。</p>
+<p>最后，可以看出，推荐系统需要变得更加“智能”，更加“个性化”，第一篇论文是在打分规则上下功夫，而这篇论文则是用深度学习神经网络来改进推荐系统，从根本上抛弃了CF模型，其研究更为高深。</p>
+<p>[1] 循环神经网络(RNN, Recurrent Neural Networks)介绍<br><a href="http://blog.csdn.net/heyongluoyao8/article/details/48636251" target="_blank" rel="external">http://blog.csdn.net/heyongluoyao8/article/details/48636251</a><br>[2]    ReLU(Rectified Linear Units)激活函数<br><a href="http://www.cnblogs.com/neopenx/p/4453161.html" target="_blank" rel="external">http://www.cnblogs.com/neopenx/p/4453161.html</a></p>
 
     </article>
     <!-- 前后页  -->
     <ul class="post-pager">
         
-            <li class="next">
-                <a href= "/2017/08/10/2017-08-10-goodbye-wp/" title= 告别 >
-                    <span>Next Post</span>
-                    <span>告别</span>
-                </a>
-            </li>
-        
         
             <li class="previous">
-                <a href= "/2017/07/11/2017-07-11-cpp-inline-func/" title= 转-Cpp内联函数 >
+                <a href= "/2017/10/20/2017-10-20-review-JKY2014/" title= review-JKY2014 >
                     <span>Previous Post</span>
-                    <span>转-Cpp内联函数</span>
+                    <span>review-JKY2014</span>
                 </a>
             </li>
         

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Python环境的搭建 · Jiang&#39;s Blog
+        Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,22 +68,11 @@
     
 </head>
     
-        <body class="post-body">
-    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
-    
-    <div class="banner">
-            <div class="blog-title">
-                <a href="/" >Jiang&#39;s Blog.</a>
-            </div>
-            <div class="post-title">
-                <a href="#" class="post-name">Python环境的搭建</a>
-            </div>
-    </div>
     
     <a class="home-link" href=/>Jiang's Blog.</a>
 </header>
@@ -91,126 +80,64 @@
         <div class="site-intro">
     
     <!-- 主页  -->
-    
-    
-    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-img" style="background-image: url(/)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
-            Python环境的搭建
-            <!-- 404 -->
-            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
-            
-        </p>
-        <!-- 404 -->
-        
         <!-- 文章页meta -->
-        
-            <!-- 文章页标签  -->
-            
-                <div class= post-intro-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = wp>wp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = intro>intro</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = python>python</a>
-    
-</div>
-            
-            <div class="post-intro-meta">
-                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
-                <span class="post-intro-time">2017/08/04</span>
-            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main post-page">
-    <article class="article-entry">
-        <h1 id="最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。"><a href="#最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。" class="headerlink" title="最最重要的话：千千万万不要去搜某个软件然后在某软件“中心”一键下载。"></a>最最重要的话：千千万万<strong>不要</strong>去搜某个软件然后在<strong>某软件“中心”</strong>一键下载。</h1><p><img class="alignnone size-full wp-image-201" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py1.jpg" alt="py1" width="554" height="213"></p>
-<p>一是怕这个软件“中心”会给你加点其它你意想不到的“全家桶”；二是你控制不了版本，书上要你用2.x还是3.x，这是有区别的，书里面提到的包，有可能在3.x里能运行，在2.x就不能运行了。这样下载真心很，不要这么搞。</p>
-<h1>一、下载与安装</h1>
-
-<h2>1.1 哪里的安装包</h2>
-
-<p>还是用某度搜下python，这么大的org标识，python.org点进去好不好。</p>
-<p><img class="alignnone size-full wp-image-202" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py2.jpg" alt="py2" width="547" height="119"></p>
-<p>进入页面后点download直接到下载页，2.x和3.x随你下载啊。</p>
-<p><img class="alignnone size-full wp-image-203" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py3.jpg" alt="py3" width="499" height="251"></p>
-<blockquote>
-<p>if you want to use a specific third party package or utility that doesn’t yet have a released version that is compatible with Python 3, and porting that package is a non-trivial task, you may choose to use Python 2 in order to retain access to that package.</p>
-</blockquote>
-<p>在这个页面往下拉就可以下载到更加“精确”的版本，例如<a href="https://www.python.org/downloads/release/python-2713/" target="_blank" rel="external">Python 2.7.13</a>，<a href="https://www.python.org/downloads/release/python-351/" target="_blank" rel="external">Python 3.5.1</a>等等等等。</p>
-<p>正确下载好后，双击安装就可以了。</p>
-<h2>1.2 环境变量</h2>
-
-<p>还有一步，添加环境变量，意思就是告诉系统你装了python。或许在低版本程序里你需要做这样的动作，我没弄明白这里的python需不需要添加，不过还是加上，以前在没加的时候安装第三方包好像会出错（似乎是npm）。</p>
-<p>“控制面板\所有控制面板项\系统”的高级系统设置里面的环境变量</p>
-<p><img class="alignnone size-full wp-image-205" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py4.jpg" alt="py4" width="647" height="532"></p>
-<p>在PATH里面加入你安装的python的目录就好，注意在PATH变量值的后面添加，并用英文;隔开。</p>
-<p><img class="alignnone size-full wp-image-206" src="http://jjkislele.cn/wordpress/wp-content/uploads/2017/07/py5.jpg" alt="py5" width="457" height="498"></p>
-<p>第一章就结束了，这个时候你的python应该就已经ready to rock了，不过python强大之处，不仅在于它简练的语法，探索式的编程方式，还在于它开放的无穷无尽的第三方库 <em>third-party library </em>，用于数据处理的什么panda啊，<em>sci</em>py啊，scikt-learn啊，这些都是我以前使用过的包，实用。</p>
-<h1>二、第三方包的安装</h1>
-
-<p>由于城墙的缘故，用ez-install或者pip很容易超时，所以就必须需要国内镜像仓库，或者在什么git啊SourceForge啊把源码包下载下来自己在本地装。</p>
-<h2>2.1 pip+国内镜像</h2>
-
-<p><a href="http://pypi.douban.com/simple/" target="_blank" rel="external">http://pypi.douban.com/simple/</a> 豆瓣<br><a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="external">http://mirrors.aliyun.com/pypi/simple/</a> 阿里<br><a href="http://pypi.hustunique.com/simple/" target="_blank" rel="external">http://pypi.hustunique.com/simple/</a> 华中理工大学<br><a href="http://pypi.sdutlinux.org/simple/" target="_blank" rel="external">http://pypi.sdutlinux.org/simple/</a> 山东理工大学<br><a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="external">http://pypi.mirrors.ustc.edu.cn/simple/</a> 中国科学技术大学<br><a href="https://pypi.tuna.tsinghua.edu.cn/simple" target="_blank" rel="external">https://pypi.tuna.tsinghua.edu.cn/simple</a> 清华</p>
-<h2>2.2 pip+本地安装</h2>
-
-<p>直接 pip -install 包名就好了。</p>
-
-    </article>
-    <!-- 前后页  -->
-    <ul class="post-pager">
-        
-            <li class="next">
-                <a href= "/2017/08/10/2017-08-10-goodbye-wp/" title= 告别 >
-                    <span>Next Post</span>
-                    <span>告别</span>
-                </a>
-            </li>
-        
-        
-            <li class="previous">
-                <a href= "/2017/07/11/2017-07-11-cpp-inline-func/" title= 转-Cpp内联函数 >
-                    <span>Previous Post</span>
-                    <span>转-Cpp内联函数</span>
-                </a>
-            </li>
-        
-    </ul>
-    <!-- 来必力City版安装代码 -->
-
+            <main class="main index-page">
     
-    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
-        <script type="text/javascript">
-            (function (d, s) {
-                var j, e = d.getElementsByTagName(s)[0];
-                if (typeof LivereTower === 'function') { return; }
-                j = d.createElement(s);
-                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                j.async = true;
-
-                e.parentNode.insertBefore(j, e);
-            })(document, 'script');
-        </script>
-        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
-    </div>
     
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2017/10/27/2017-10-27-review-SWC2016/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>post</span>
+                    </h2>
+                <div class="abstract-content">
+                    Personal Recommendation Using Deep Recurrent Neural Networks in NetEase
+Wu S, Ren W, Yu C, et al. Personal recommendation using deep recurrent neural networks in NetEase[C]// IEEE, International Conference on Data Engineering. IEEE, 2016:1218-1229.
 
-<!-- City版安装代码已完成 -->
+
+主题传统协同过滤CF（Collaborative Filtering）推荐系统，仅分析用户已...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = recommendation>recommendation</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = ICDE>ICDE</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/27</span>
+                </div>
+            </div>
+        </article>
+    
+    <!-- paginator  -->
+    
 </main>
             <!-- profile -->
             
