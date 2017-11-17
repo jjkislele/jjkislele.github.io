@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        USAGE OF Sketch-based shape retrieval · Jiang&#39;s Blog
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170912" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">USAGE OF Sketch-based shape retrieval</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Jiang's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            USAGE OF Sketch-based shape retrieval
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = TOG>TOG</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2017/11/17</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="大佬的项目如何去使用？"><a href="#大佬的项目如何去使用？" class="headerlink" title="大佬的项目如何去使用？"></a>大佬的项目如何去使用？</h1><blockquote>
+<p>Eitz M, Richter R, Boubekeur T, et al. Sketch-based shape retrieval[J]. Acm Transactions on Graphics, 2012, 31(4):1-10.</p>
+</blockquote>
+<p><em>Note:</em> 本文旨在说明大佬项目编译后产生的命令行窗口程序的使用方法，如何编译大佬的源码，将在下篇文章详细说明。</p>
+<h2 id="What’s-this"><a href="#What’s-this" class="headerlink" title="What’s this?"></a>What’s this?</h2><p>This project is forked from <a href="https://github.com/mathiaseitz/imdb_framework" target="_blank" rel="external">mathiaseitz’s imdb_framework</a> which I am interested in.</p>
+<p>Whole code is based on the paper <a href="http://cybertron.cg.tu-berlin.de/eitz/projects/sbsr/" target="_blank" rel="external">“Sketch-Based Shape Retrieval” - SIGGRAPH 2012</a> and the previous paper <a href="http://cybertron.cg.tu-berlin.de/eitz/projects/sbsr/" target="_blank" rel="external">“Sketch-based image retrieval: benchmark and bag-of-features descriptors” -  IEEE T VIS COMPUT GR 2011</a>.</p>
+<p>And you can find <em>this project</em> from <a href="https://github.com/jjkislele/imdb_framework" target="_blank" rel="external">here</a></p>
+<h1 id="USAGE"><a href="#USAGE" class="headerlink" title="USAGE"></a>USAGE</h1><h2 id="generate-filelist"><a href="#generate-filelist" class="headerlink" title="generate_filelist"></a>generate_filelist</h2><p>生成图片文件索引，如果没有-o则在控制台显示图片文件名，否则输出二进制索引文件</p>
+<p>-f 读取上述索引文件</p>
+<p>完成索引后才能进行特征提取</p>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">generate_filelist.exe -d ./airplane -r 10 -t *.png -o airplane</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">files [options]</div><div class="line">options:</div><div class="line">  --rootdir, -d               root directory of files descriptors are compute from [optional, default is &apos;.&apos;]</div><div class="line">  --namefilters, -t           name filters for files to be listed, e.g. &quot;*.png&quot; &quot;*.jpg&quot; [required]</div><div class="line">  --filelist, -f              file that contains existing list of filenames [optional, if not provided all matching files in and below rootdir are listed]</div><div class="line">  --outputfile, -o            output filelist filename [optional, if not provided, output is console.]</div><div class="line">  --random-sample, -r         random shuffle and truncate file list to given size [optional]</div><div class="line">  --seed, -s                  seed value for random-sampling [optional, defaultis current time]</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="compute-descriptors"><a href="#compute-descriptors" class="headerlink" title="compute_descriptors"></a>compute_descriptors</h2><p>对由generate_filelist产生的索引中的图片进行特征提取</p>
+<p>descriptors对应的generator有4种：</p>
+<ul>
+<li>galif</li>
+<li>gist</li>
+<li>shog</li>
+<li>tinyimage</li>
+</ul>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compute_descriptors.exe compute galif -r . -f test -o galif_</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">compute &lt;generator&gt; [options]</div><div class="line">options:</div><div class="line">  --rootdir, -r               root directory of data descriptors are computed from [required]</div><div class="line">  --filelist, -f              file that contains filenames of data (images/models) [required]</div><div class="line">  --output, -o                output prefix [required]</div><div class="line">  --parameters, -p            parameters for generator construction [optional] (default: params defined in generator)</div><div class="line">  --numthreads, -t            number of threads for parallel computation [optional] (default: number of processors)</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="compute-vocabulary"><a href="#compute-vocabulary" class="headerlink" title="compute_vocabulary"></a>compute_vocabulary</h2><p>输入compute_descriptors计算出的特征，进行聚类操作，输出特征的类心（vec_vec_f32_t格式）</p>
+<p>若不设定-s -n项，则void readAllWords，读取-d中的所有特征向量</p>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compute_vocabulary.exe -d galif_features -c 2 -o galif_voc</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">compute_vocabulary [options]</div><div class="line">options:</div><div class="line">  --descfile, -d              descriptors file [required]</div><div class="line">  --sizefile, -s              file that contains number of words per descriptor[optional] 此处若设置，则-n也必须设置</div><div class="line">  --numsamples, -n            number of words randomly extracted from descriptor file [optional, but sizefile must also be specified] 此处若设置，则-s也必须设置</div><div class="line">  --numclusters, -c           number of clusters/visual words to generate [required]</div><div class="line">  --outputfile, -o            output file [required]</div><div class="line">  --numthreads, -t            number of threads for parallel computation (default: number of processors) [optional]</div><div class="line">  --maxiter, -i               kmeans stopping criterion: maximum number of iterations (default: 20) [optional]</div><div class="line">  --minchangesfraction, -m    kmeans stopping criterion: number of changes (fraction of total samples) (default: 0.01) [optional]</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="compute-histvw"><a href="#compute-histvw" class="headerlink" title="compute_histvw"></a>compute_histvw</h2><p>由经过compute_vocabulary聚类后产生的类心数据position与特征descriptors通过本程序产生codebook（BoF词袋）</p>
+<p>convert descriptors into histograms of visual words</p>
+<p>quantization有两个选项：</p>
+<ul>
+<li>hard</li>
+<li>fuzzy</li>
+</ul>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compute_histvw.exe -v galif_voc -d galif_features -p galif_positions -o galif_histvw -q hard</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">compute_histvw [options]</div><div class="line">options:</div><div class="line">  --vocabulary, -v            filename of the vocabulary to be used for quantization [required]</div><div class="line">  --descriptors, -d           filename of the descriptors to convert into histograms of visual words [required]</div><div class="line">  --positions, -p             positions data for features [required]</div><div class="line">  --output, -o                filename of the output file of histograms of visual words [required]</div><div class="line">  --quantization, -q          quantization method &#123;hard,fuzzy&#125; [required]</div><div class="line">  --sigma, -s                 sigma for gaussian weighting in fuzzy quantization [required (with &apos;fuzzy&apos; quantization only)]</div><div class="line">  --pyramidlevels, -l         number of spatial pyramid levels [optional, default 1]</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="compute-index"><a href="#compute-index" class="headerlink" title="compute_index"></a>compute_index</h2><p>输入由compute_histvw产生的-h，输出tf-idf</p>
+<p>tfidf分别有4个选项</p>
+<ul>
+<li>constant</li>
+<li>video_google </li>
+<li>simple</li>
+<li>lucene</li>
+</ul>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">compute_index.exe -h galif_histvw -o galif_tfidf -t constant constant</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">compute_index [options]</div><div class="line">options:</div><div class="line">  --histvw, -h                filename to vector of histograms of visual words [required]</div><div class="line">  --output, -o                filename of the output index file [required]</div><div class="line">  --tfidf, -t                 two strings specifying tf and idf function to be used (eg. -t constant constant) [required]</div></pre></td></tr></table></figure>
+<hr>
+<h2 id="image-search"><a href="#image-search" class="headerlink" title="image_search"></a>image_search</h2><p>输入compute_index生成的tf-idf，compute_vocabulary生成的codebook，输出检索结果，top-k由-n设置</p>
+<p>若-s没有提供generator_name，则必须-g设置</p>
+<p>若没有-s则需从-m设置search parameters，有两个搜索选项：</p>
+<ul>
+<li><p>BofSearch</p>
+<ul>
+<li>search_type = BofSearch</li>
+<li>index_file = [index_file的路径]</li>
+<li>tf = [若不设置，则默认为constant]</li>
+<li>idf = [若不设置，则默认为constant]</li>
+</ul>
+</li>
+<li><p>LinearSearch 里面的设置还未搞明白</p>
+<ul>
+<li>search_type = LinearSearch       </li>
+<li>descriptor_file = </li>
+<li>distfn =<br>是否是tensor</li>
+<li>name = tensor     </li>
+</ul>
+</li>
+</ul>
+<p>用例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">image_search.exe -q 42.png -m search_type=BofSearch index_file=galif_tfidf -v galif_voc -l test -g galif</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">image_search [options]</div><div class="line">options:</div><div class="line">  --queryimage, -q            filename of image to be used as the query [required]</div><div class="line">  --searchptree, -s           filename of the JSON file containing parameters for the search manager [optional, if not provided, --searchparams must be given]</div><div class="line">  --searchparams, -m          parameters for the search manager [optional, if not provided, --searchptree must be given]</div><div class="line">  --vocabulary, -v            filename of vocabulary used for quantization [optional, only required with bag-of-features search]</div><div class="line">  --filelist, -l              filename of images filelist [required]</div><div class="line">  --generatorptree, -p        filename of the JSON file containing generator name and parameters [optional, if not provided, generator&apos;s default values are used&apos;]</div><div class="line">  --numresults, -n            number of results to search for [optional, if not provided all distances get computed]</div><div class="line">  --generatorname, -g         name of generator [optional, if given, we will use generator&apos;s default parameters and ignore --generatorptree]</div></pre></td></tr></table></figure>
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2017/11/17/2017-11-17-usage-superLU2lib/" title= 在win的VS2015下编译SuperLU与BLAS的动态库 >
+                    <span>Next Post</span>
+                    <span>在win的VS2015下编译SuperLU与BLAS的动态库</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/10/27/2017-10-27-review-SWC2016/" title= review-SWC2016 >
+                    <span>Previous Post</span>
+                    <span>review-SWC2016</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
+    
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    
+
+<!-- City版安装代码已完成 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:jjkjjk333@sina.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/jjkislele" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//weibo.com/jjkislele" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+        <span
+            id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 14 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href= "/2017/11/17/2017-11-03-usage-MRT2012/" >USAGE OF Sketch-based shape retrieval</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href= "/2017/11/17/2017-11-17-usage-superLU2lib/" >在win的VS2015下编译SuperLU与BLAS的动态库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2017/10/27/2017-10-27-review-SWC2016/" >review-SWC2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span><a class="archive-post-title" href= "/2017/10/20/2017-10-20-review-JKY2014/" >review-JKY2014</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2017/10/11/2017-10-11-review-MSSR2017/" >review-MSSR2017</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href= "/2017/09/25/2017-09-25-new-blog/" >新的开始</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2017/08/10/2017-08-10-goodbye-wp/" >告别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2017/08/04/2017-08-04-python-env-intro/" >Python环境的搭建</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2017/07/11/2017-07-11-cpp-inline-func/" >转-Cpp内联函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2017/07/08/2017-07-08-vs2015/" >转-vs2015常用快捷键</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2017/05/02/2017-05-02-dissertation/" >毕业论文格式该咋搞？</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2016/11/23/2016-11-23-kaggle/" >Kaggle网站上的说明</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span><a class="archive-post-title" href= "/2016/10/31/2016-10-31-mapreduce/" >转-MapReduce原理与设计思想</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2016/06/24/2016-06-24-hello-world/" >世界，你好！</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">diary</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">wp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">cite</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">mapreduce</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">func</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">review</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">TOG</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">usage</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SIGIR</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">recommendation</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ICDE</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
