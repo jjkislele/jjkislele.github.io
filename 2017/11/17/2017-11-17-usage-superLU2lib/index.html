@@ -144,10 +144,10 @@
 <p>这个SuperLU项目里面还有高性能计算版本的，我用的是最普通的版本，没有使用<em>SuperLU_MT</em>和<em>SuperLU_DIST</em>，不好意思，学识短浅，不明所以。</p>
 <h3 id="2-编译"><a href="#2-编译" class="headerlink" title="2.编译"></a>2.编译</h3><h4 id="SuperLU"><a href="#SuperLU" class="headerlink" title="SuperLU"></a>SuperLU</h4><p>1) 挪源码到VS项目</p>
 <p>首先打开VS2015，新建一个空解决方案，然后再将下载下来的压缩包（例如我的叫superlu_5.2.1.tar.gz）里面的’’./SRC’’的所有文件拷到空解决方案的空项目里面。</p>
-<p>![](<a href="https://public.lightpic.info/image/188C_5A0EA3AC0.jpg）" target="_blank" rel="external">https://public.lightpic.info/image/188C_5A0EA3AC0.jpg）</a></p>
+<p><img src="https://public.lightpic.info/image/188C_5A0EA3AC0.jpg" alt=""></p>
 <p>然后按上图所示，把源码包含到本项目中，这样就可以进入下一步了。</p>
 <p>2) 修改“配置属性-常规”的“项目默认值-配置类型”为“静态库(.lib)”，注意你是需要生成64位还是32位的，是debug版还是release版，这些在后续使用中都是有区别的，如下图所示。</p>
-<p>![](<a href="https://public.lightpic.info/image/638E_5A0EA3AC0.jpg）" target="_blank" rel="external">https://public.lightpic.info/image/638E_5A0EA3AC0.jpg）</a></p>
+<p><img src="https://public.lightpic.info/image/638E_5A0EA3AC0.jpg" alt=""></p>
 <p>3) 重新生成</p>
 <p>点绿箭头也可以，让编译器运行起来，<strong>然后就会出现喜闻乐见的错误了</strong>，如果这里你生成的是release版本的话，编译器竟然居然在报错的情况下能够生成.lib，<strong>不过在使用的时候，你还是会报错的</strong>，这一点需注意。</p>
 <p><strong>4) 喜闻乐见的报错</strong></p>
@@ -173,47 +173,10 @@
 <p>全部修改后，BLAS的动态库就可以生成了，这里需要注意的是，后续使用时，x64和x86需要区分，SuperLU和BLAS需要版本需要一致。</p>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>使用的时候注意不要把SuperLU和BLAS生成动态库的源码给删掉了，因为在后续项目使用它们时候，需要引用这些源码。那举个例子，例如我在我的项目中如果要使用SuperLU和BLAS时该怎么办呢？</p>
 <p>打开项目属性，一，在“配置属性-VC++目录”的“库目录”里添加你放SuperLU和BLAS的lib文件的地址，比如我把两个lib放到<code>C:\superLU_5.2.1</code>里面了，所以这个路径需要添加到库目录里，来告诉VS要用的lib的位置；二，在“配置属性-链接器-输入”中的“附加依赖项”里面添加SuperLU和BLAS的lib，这里我为了区分release和debug版本，所以在debug版本后面加了个d以示区分。详细如下图所示。</p>
-<p>![](<a href="https://public.lightpic.info/image/D8AD_5A0EA3AC0.jpg）" target="_blank" rel="external">https://public.lightpic.info/image/D8AD_5A0EA3AC0.jpg）</a></p>
-<p>![](<a href="https://public.lightpic.info/image/56AA_5A0EA3AC0.jpg）" target="_blank" rel="external">https://public.lightpic.info/image/56AA_5A0EA3AC0.jpg）</a></p>
+<p><img src="https://public.lightpic.info/image/D8AD_5A0EA3AC0.jpg" alt=""></p>
+<p><img src="https://public.lightpic.info/image/56AA_5A0EA3AC0.jpg" alt=""></p>
 <hr>
-<p>以上就是全部内容，这算是我的一个记录，里面如果有什么错误还请大家指出，<strong>特别是修改代码那部分</strong>，我看其他的关于SuperLU的教程都没有提到还要改代码这样的事，而源码作者是在linux系统做的工作，所以多少会有出入，所以所以，我也不知道了，谢谢。<br>在win的VS2015下编译SuperLU与BLAS的动态库</p>
-<p>NOTICE 本文是在window8.1环境下使用VS2015编译SuperLU与BLAS的动态库（因为最近有个项目依赖SuperLU和BLAS），本文将会说明编译动态库的详细过程，以及编译过程中遇到的错误，还有为了跳过错误而做的修改，SuperLU与BLAS的原理本文一概不知，实在抱歉。在下面的相关阅读里面，有我参考的资料，实际上也没什么帮助，因为生成动态库也就那几步，不过还是在此表示感谢。</p>
-<p>相关阅读</p>
-<p>SuperLU使用总结</p>
-<p>编译SuperLU虽然本链接已经无法访问了。</p>
-<p>编译</p>
-<p>1.下载源码</p>
-<p>百度SuperLU点第一个就可以了，这里还是贴出地址SuperLU: Home Page，github地址xiaoyeli/superlu，目前（我所见）最新的Download software (v5.2.1)。</p>
-<p>这个SuperLU项目里面还有高性能计算版本的，我用的是最普通的版本，没有使用SuperLU_MT和SuperLU_DIST，不好意思，学识短浅，不明所以。</p>
-<p>2.编译</p>
-<p>SuperLU</p>
-<p>1) 挪源码到VS项目</p>
-<p>首先打开VS2015，新建一个空解决方案，然后再将下载下来的压缩包（例如我的叫superlu_5.2.1.tar.gz）里面的”./SRC”的所有文件拷到空解决方案的空项目里面。</p>
-<p>然后按上图所示，把源码包含到本项目中，这样就可以进入下一步了。</p>
-<p>2) 修改“配置属性-常规”的“项目默认值-配置类型”为“静态库(.lib)”，注意你是需要生成64位还是32位的，是debug版还是release版，这些在后续使用中都是有区别的，如下图所示。</p>
-<p>3) 重新生成</p>
-<p>点绿箭头也可以，让编译器运行起来，然后就会出现喜闻乐见的错误了，如果这里你生成的是release版本的话，编译器竟然居然在报错的情况下能够生成.lib，不过在使用的时候，你还是会报错的，这一点需注意。</p>
-<p>4) 喜闻乐见的报错</p>
-<p>一共有两类错误：一是SuperMatrix *AA类没有赋值，二是整型变量int j没有赋值，每类错误有4处，共8个未赋值错误。</p>
-<p>对于SuperMatrix <em>AA而言，仔细阅读代码，就能发现在大概188到190行else语句处（每处AA都是同样的问题），的确if以后，AA就没有赋值过，在没有充分了解SuperLU的原理前，私自修改代码是愚笨的，但我并没有更多的时间去研究整个代码了，所以就只能硬着头皮上了，死马当活马医，期待我的项目里面并没有用到这一条函数操作。修改如下，在if下面加了个else语句：else AA = (SuperMatrix </em>)SUPERLU_MALLOC(sizeof(SuperMatrix));</p>
-<p>else {<br>        if ( A-&gt;Stype == SLU_NC ) AA = A;<br>        else AA = (SuperMatrix *)SUPERLU_MALLOC(sizeof(SuperMatrix));<br>    }<br>其余AA的修改均一致。</p>
-<p>而对于int j，同理，一边 祈祷项目没有用到这部分，一边给j赋值0。这样一来，就可以跑通了，正常生成superlu的.lib文件。</p>
-<p>当然，你还会遇到_CRT_SECURE_NO_WARNINGS的问题，这个不算问题吧，在“预处理器定义”里面加上就可以了。</p>
-<p>BLAS</p>
-<p>由于</p>
-<p>由于SuperLu需要调用BLAS库中的一些函数，所以需要编译BLAS库，SuperLU官网上说BLAS库速度不快，可以使用推荐的Intel MKL、ATLAS, or Goto BLAS</p>
-<p>这里仅以SuperLU下载之后文件中带的BLAS为例编译，即使之前有编译好的BLAS，也最好是用SuperLU文件夹中带的BLAS编译，减少出错的可能性。<br>因此还需要生成BLAS的动态库，我的项目里面也明确写了需要BLAS，那就依葫芦画瓢干起来吧。</p>
-<p>1) 挪源码到VS项目</p>
-<p>这里的BLAS源码是放在”./CBLAS”里面的，同理拷过去就可以了。</p>
-<p>2) 修改</p>
-<p>3) 重新生成</p>
-<p>4) 喜闻乐见的报错</p>
-<p>integer a_dim1并没有赋值，还是上句老话，在没有充分了解SuperLU的原理前，私自修改代码是愚笨的，但没办法啊，给a_dim1赋个0吧：</p>
-<p>a_dim1 = 0;<br>全部修改后，BLAS的动态库就可以生成了，这里需要注意的是，后续使用时，x64和x86需要区分，SuperLU和BLAS需要版本需要一致。</p>
-<p>使用</p>
-<p>使用的时候注意不要把SuperLU和BLAS生成动态库的源码给删掉了，因为在后续项目使用它们时候，需要引用这些源码。那举个例子，例如我在我的项目中如果要使用SuperLU和BLAS时该怎么办呢？</p>
-<p>打开项目属性，一，在“配置属性-VC++目录”的“库目录”里添加你放SuperLU和BLAS的lib文件的地址，比如我把两个lib放到C:\superLU_5.2.1里面了，所以这个路径需要添加到库目录里，来告诉VS要用的lib的位置；二，在“配置属性-链接器-输入”中的“附加依赖项”里面添加SuperLU和BLAS的lib，这里我为了区分release和debug版本，所以在debug版本后面加了个d以示区分。详细如下图所示。</p>
-<p>以上就是全部内容，这算是我的一个记录，里面如果有什么错误还请大家指出，特别是修改代码那部分，我看其他的关于SuperLU的教程都没有提到还要改代码这样的事，而源码作者是在linux系统做的工作，所以多少会有出入，所以所以，我也不知道了，谢谢。</p>
+<p>以上就是全部内容，这算是我的一个记录，里面如果有什么错误还请大家指出，<strong>特别是修改代码那部分</strong>，我看其他的关于SuperLU的教程都没有提到还要改代码这样的事，而源码作者是在linux系统做的工作，所以多少会有出入，所以所以，我也不知道了，谢谢。</p>
 
     </article>
     <!-- 前后页  -->
@@ -300,28 +263,6 @@
     <div class="sidebar-content sidebar-content-show-archive">
           <div class="sidebar-archive">
     <!-- 在ejs中将archive按照时间排序 -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     
     
     
@@ -552,35 +493,35 @@
     
         <span class="sidebar-tag-name"><a href= "#">wp</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">cite</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">mapreduce</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">func</a></span>
     
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">review</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">TOG</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">python</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">usage</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">SIGIR</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">recommendation</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">ICDE</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">usage</a></span>
     
     </div>
     <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
