@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+    <title>
+        
+        BM3D(Block-Matching and 3D filtering)读后感 · Jiang&#39;s Blog
+        
+    </title>
+    <link rel="icon" href= /assests/favicon.ico>
+    <!-- 提前加载place holder  -->
+    <style>
+        @font-face {
+            font-family: 'Oswald-Regular';
+            src: url('/font/Oswald-Regular.ttf');
+        }
+        @font-face {
+            font-family: 'Source Sans Pro';
+            src: url('/font/Source Sans Pro.woff'),
+            url('/font/Source Sans Pro.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        @font-face {
+            font-family: 'Source Code Pro';
+            src: url('/font/SourceCodePro-Regular.ttf.woff'),
+            url('/font/SourceCodePro-Regular.ttf.woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+        
+        
+        .site-intro-placeholder {
+        position: absolute;
+        z-index: -2;
+        top: 0;
+        left: 0px;
+        width: calc(100% + 300px);
+        height: 100%;
+        background: repeating-linear-gradient(-45deg, #444 0, #444 80px, #333 80px, #333 160px);
+        background-position: center center;
+        transform: translate3d(-226px, 0, 0);
+        animation: gradient-move 2s ease-out 0s 1;
+        }
+        @keyframes gradient-move {
+        0% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        99% {
+            transform: translate3d(0, 0, 0);
+        }
+        99.1% {
+            transform: translate3d(-226px, 0, 0);
+        }
+        100% {
+            transform: translate3d(-226px, 0, 0);
+        }
+    }
+    </style>
+    <link rel="stylesheet" href = "/css/style.css?v=20170912" />
+    <script src="//cdn.staticfile.org/jquery/3.2.1/jquery.min.js" defer></script>
+    
+    <script src="/scripts/main.js" defer></script>
+    <!-- 百度统计  -->
+    
+    <!-- 谷歌统计  -->
+    
+</head>
+    
+        <body class="post-body">
+    
+    
+<header class="header">
+
+    <div class="header-sidebar-menu">&#xe775;</div>
+    <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">BM3D(Block-Matching and 3D filtering)读后感</a>
+            </div>
+    </div>
+    
+    <a class="home-link" href=/>Jiang's Blog.</a>
+</header>
+    <div class="wrapper">
+        <div class="site-intro">
+    
+    <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
+            
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
+    <div class="site-intro-placeholder"></div>
+    <div class="site-intro-meta">
+        <!-- 标题  -->
+        <h1 class="intro-title">
+            <!-- 主页  -->
+            
+            BM3D(Block-Matching and 3D filtering)...
+            <!-- 404 -->
+            
+        </h1>
+        <!-- 副标题 -->
+        <p class="intro-subtitle">
+            <!-- 主页副标题  -->
+            
+            
+        </p>
+        <!-- 404 -->
+        
+        <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = TIP>TIP</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2018/07/18</span>
+            </div>
+        
+    </div>
+</div>
+        <div class="container">
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="BM3D-Block-Matching-and-3D-filtering-读后感"><a href="#BM3D-Block-Matching-and-3D-filtering-读后感" class="headerlink" title="BM3D(Block-Matching and 3D filtering)读后感"></a>BM3D(Block-Matching and 3D filtering)读后感</h1><h2 id="一、-总览"><a href="#一、-总览" class="headerlink" title="一、    总览"></a>一、    总览</h2><p>BM3D是2007年TIP的文章，题目是<strong>Image denoising by sparse 3D transform-domain collaborative ltering</strong>，论文、项目的地址是<a href="http://www.cs.tut.fi/~foi/GCF-BM3D/，提供matlab代码；http://www.ipol.im/pub/art/2012/l-bm3d/为C++的实现，这篇论文里面有对BM3D实现的更为详细的说明。" target="_blank" rel="external">http://www.cs.tut.fi/~foi/GCF-BM3D/，提供matlab代码；http://www.ipol.im/pub/art/2012/l-bm3d/为C++的实现，这篇论文里面有对BM3D实现的更为详细的说明。</a></p>
+<p>处理灰度图的BM3D以及它的变体CBM3D（彩色图）、VBM3D（时域）是图像去噪领域公认的去噪效果（PSNR）最好的，而BM4D、VBM4D等也都是沿袭BM3D的基于块处理（block-wise estimate）的思想，但其计算时间复杂度极大，或许只能用于离线处理（offline），当然后续有文章进行优化（代码、算法），这里就不再提及。</p>
+<hr>
+<p><img src="https://img-blog.csdn.net/20180718164658734?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>找相似块，得到块集合</p>
+<hr>
+<p>BM3D算是NLM(non-local mean)的升级版本，因为它主要用到了非局部块匹配的思想，首先找相似块，不同于传统NLM使用L2距离，它用了硬阈值线性变换（见<strong>节二-2</strong>）降低了L2距离的复杂度；找到相似块后，NLM是做一个均值处理，而BM3D则是将相似块域转换，提出Collaborative filtering降低相似块自身含有的噪声（NLM做均值，引入了相似块的噪声）（见<strong>节二-2</strong>），并在aggregation处对相似块加权处理（见<strong>节二-3</strong>），得到降噪后的目标块。</p>
+<p>BM3D的复杂之处在于，首先找相似块，其次是采用了两次block-wise estimate，复杂度相比NLM翻了1倍，且含有域变换操作。</p>
+<h2 id="二、-算法说明"><a href="#二、-算法说明" class="headerlink" title="二、    算法说明"></a>二、    算法说明</h2><h3 id="1-流程图"><a href="#1-流程图" class="headerlink" title="1.    流程图"></a>1.    流程图</h3><p><img src="https://img-blog.csdn.net/20180718164835109?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>分为两步，Basic estimate与Final estimate，两步除Collaborative filtering不同外，其余子步骤近似。其中：</p>
+<ul>
+<li>S1 Basic estimate:<ul>
+<li>S11 Block-wise estimate<ul>
+<li>S111 Grouping 为目标块找到相似块，块集合无顺序限制；</li>
+<li>S112 Collaborative hard-thresholding 使用某种域变换方法，得到“变换后的相似块集合”，采用协同（由相似块共同确定）硬阈值策略“弱化”相似块的噪声，后反变换回原始块域；</li>
+</ul>
+</li>
+<li>S12 Aggregation 加权平均相似块（S112处理后），叠加后得到basic estimate后的目标块；</li>
+</ul>
+</li>
+<li>S2 Final estimate:<ul>
+<li>S21 Block-wise estimate<ul>
+<li>S211 Grouping 使用S111步的块集合，以及已由S1处理后的图像重新计算块集合</li>
+<li>S212 Collaborative Wiener filtering 域变换后，使用维纳滤波</li>
+</ul>
+</li>
+<li>S22 Aggregation</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-S111-Grouping-找相似块"><a href="#2-S111-Grouping-找相似块" class="headerlink" title="2.    S111 Grouping 找相似块"></a>2.    S111 Grouping 找相似块</h3><p>本文使用L2距离判断，采用a normalized 2D linear transform与hard-thresholding对块距离进行预处理操作，公式如下：<br><img src="https://img-blog.csdn.net/20180718164855378?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>因为含有噪声的图像，计算L2距离，噪声使两个相似块的差异变大，可能找到错误的相似块。<br>其中，</p>
+<ul>
+<li>x为像素点，X为图像</li>
+<li><img src="https://img-blog.csdn.net/20180718165213874?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">目标块， <img src="https://img-blog.csdn.net/2018071816522359?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">搜索块</li>
+<li><img src="https://img-blog.csdn.net/20180718165235688?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">是S1中的块大小</li>
+<li><img src="https://img-blog.csdn.net/20180718165245827?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">硬阈值操作，阈值设为<img src="https://img-blog.csdn.net/20180718165254993?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"> </li>
+<li><img src="https://img-blog.csdn.net/20180718165303511?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">是归一化后的二维线性变换</li>
+</ul>
+<p>根据距离就可以找到相似块集合，由式（5）所示，<br><img src="https://img-blog.csdn.net/20180718165004898?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>其中，</p>
+<ul>
+<li><img src="https://img-blog.csdn.net/2018071816534254?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">确定是否相似的超参数</li>
+<li><img src="https://img-blog.csdn.net/20180718165347766?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为 <img src="https://img-blog.csdn.net/20180718165353484?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">的相似块集合</li>
+</ul>
+<h3 id="3-S112-Collaborative-hard-thresholding-相似块降噪"><a href="#3-S112-Collaborative-hard-thresholding-相似块降噪" class="headerlink" title="3.    S112 Collaborative hard-thresholding 相似块降噪"></a>3.    S112 Collaborative hard-thresholding 相似块降噪</h3><p>此处使用归一化的3D线性变换（normalized 3D linear transform）<img src="https://img-blog.csdn.net/20180718165615511?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">来降低相似块的噪声，然后使用反变换 <img src="https://img-blog.csdn.net/20180718165629863?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">得到S112步处理后的相似块 <img src="https://img-blog.csdn.net/20180718165640887?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">，如下式（6）所示，<br><img src="https://img-blog.csdn.net/20180718165535173?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>其中，</p>
+<ul>
+<li><img src="https://img-blog.csdn.net/20180718165651415?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为归一化的3D线性变换， <img src="https://img-blog.csdn.net/201807181656576?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为其反变换</li>
+<li><img src="https://img-blog.csdn.net/20180718165726577?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">硬阈值操作，阈值设为 <img src="https://img-blog.csdn.net/20180718165733962?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></li>
+<li><img src="https://img-blog.csdn.net/20180718165739333?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"> 为处理后的相似块集合<h4 id="a-为什么要这么做"><a href="#a-为什么要这么做" class="headerlink" title="a)    为什么要这么做"></a>a)    为什么要这么做</h4>文中ⅡC中提到，传统方法，如NLM，由空域得到近似块，然后对近似块的每个像素一一对应去平均，作为目标块每个像素的值。但是，上述策略对于如下场景并不合适：</li>
+</ul>
+<h5 id="i-某些相似块拥有的噪声更小，相比其它相似块，该块的“权重”应更大，而不是简单取平均"><a href="#i-某些相似块拥有的噪声更小，相比其它相似块，该块的“权重”应更大，而不是简单取平均" class="headerlink" title="i.    某些相似块拥有的噪声更小，相比其它相似块，该块的“权重”应更大，而不是简单取平均"></a>i.    某些相似块拥有的噪声更小，相比其它相似块，该块的“权重”应更大，而不是简单取平均</h5><h5 id="ii-相似块图像信息冗余，从空域上看，两个有重叠区域的相似块，简单平均会造成目标块信息重复。"><a href="#ii-相似块图像信息冗余，从空域上看，两个有重叠区域的相似块，简单平均会造成目标块信息重复。" class="headerlink" title="ii.    相似块图像信息冗余，从空域上看，两个有重叠区域的相似块，简单平均会造成目标块信息重复。"></a>ii.    相似块图像信息冗余，从空域上看，两个有重叠区域的相似块，简单平均会造成目标块信息重复。</h5><p>因此采用“Collaborative ltering by shrinkage in transform domain”的方式，能够加强相似块的稀疏性，同时降低相似块的噪声。<br><img src="https://img-blog.csdn.net/20180718165759307?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h3 id="4-S12-Aggregation-加权生成目标块"><a href="#4-S12-Aggregation-加权生成目标块" class="headerlink" title="4.    S12 Aggregation 加权生成目标块"></a>4.    S12 Aggregation 加权生成目标块</h3><p>同样是为了降低相似块的信息冗余与自身噪声，所以我认为与S112的目的一致。加权平均后得到目标块的像素值，如式（12）（10）所示：<br><img src="https://img-blog.csdn.net/2018071816583732?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p><img src="https://img-blog.csdn.net/20180718165845177?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>其中，</p>
+<ul>
+<li><img src="https://img-blog.csdn.net/20180718165951551?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为权重</li>
+<li><img src="https://img-blog.csdn.net/20180718165958312?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"> 为公式（6）硬阈值操作后的非0系数的个数</li>
+<li><img src="https://img-blog.csdn.net/20180718170004305?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">，在实际搜索相似块时，需要对原图padding，由padding得到的相似块不纳入加权平均中</li>
+</ul>
+<h3 id="5-S211-Grouping"><a href="#5-S211-Grouping" class="headerlink" title="5.    S211 Grouping"></a>5.    S211 Grouping</h3><p>由S1初步处理后的图像，重新计算L2距离，得到相似块集合，此处不再使用硬阈值处理，公式如式（7）所示：</p>
+<p><img src="https://img-blog.csdn.net/20180718170042963?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<p>其中，</p>
+<ul>
+<li><img src="https://img-blog.csdn.net/20180718170139708?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为S2步的判断是否相似的超参数</li>
+<li><img src="https://img-blog.csdn.net/2018071817014733?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">为相似块集合</li>
+</ul>
+<h3 id="6-S212-Collaborative-Wiener-filtering"><a href="#6-S212-Collaborative-Wiener-filtering" class="headerlink" title="6.    S212 Collaborative Wiener filtering"></a>6.    S212 Collaborative Wiener filtering</h3><p>由S211步得到的相似块集合 <img src="https://img-blog.csdn.net/2018071817014733?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">，经过某个域变换后，使用维纳收缩系数（Wiener shrinkage coefcients） <img src="https://img-blog.csdn.net/20180718170241601?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">加权，后经过反变换，得到块集合 <img src="https://img-blog.csdn.net/20180718170248178?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述">。如式（9）、（8）所示。</p>
+<p><img src="https://img-blog.csdn.net/20180718170324769?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br><img src="https://img-blog.csdn.net/20180718170333204?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h3 id="7-S22-Aggregation"><a href="#7-S22-Aggregation" class="headerlink" title="7.    S22 Aggregation"></a>7.    S22 Aggregation</h3><p>S12已经说明过了，S22与S12近似，公式如式（11）所示，而最终结果，与式（9）的计算步骤一致。</p>
+<p><img src="https://img-blog.csdn.net/20180718170458615?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+<h2 id="三、-结论"><a href="#三、-结论" class="headerlink" title="三、    结论"></a>三、    结论</h2><h3 id="1-加速"><a href="#1-加速" class="headerlink" title="1.    加速"></a>1.    加速</h3><p>在实际操作中，为加快BM3D的计算速度，在寻找相似块的步骤后，得到的块实际上已经进行了2D变换处理，然后再加上一个1D变换（文中使用1D-Haar离散小波变换），成为3D变换，使用2D+1D的变换方法替代直接3D变换。</p>
+<h3 id="2-难点"><a href="#2-难点" class="headerlink" title="2.    难点"></a>2.    难点</h3><p>文中提到的2D变换与各种超参数，并没有一个确定值，对于真实视频去噪，使用的2D变换与超参数可能与文章实验设置不同，因此需要进行微调，也就是需要大量实验的积累。</p>
+<p>最终的去噪结果如下图所示，可以发现，噪声被很好地去除了，图像边缘保留完整，图像纹理得到了很好的还原。<br><img src="https://img-blog.csdn.net/20180718170510486?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>但这些都是自行添加高斯白噪声产生的测试图像，若实际运用在图像降噪中，原始图像不会有这么多噪声，因此就不需要BM3D两步去噪。那么可以将BM3D的两步拆开，采用前步的硬阈值、2D变换寻找相似块、1D变换升至3D域再加权平均，或后步直接使用维纳滤波，或许就已经有很好的效果了。</p>
+<p>下一步会总结BM4D、VBM4D的东西。</p>
+<h2 id="四、-C-BM3D"><a href="#四、-C-BM3D" class="headerlink" title="四、    C-BM3D"></a>四、    C-BM3D</h2><p>针对彩色图，本文将图像的RGB色彩空间转换为YUV色彩空间，因为YUV的Y分量拥有较其余分量更多的图像信息（边缘、材质、纹理等），并且拥有更高的SNR（信噪比），而U、V分量拥有更多的低频信息。<br>因此对于C-BM3D，本文使用Y分量搜寻相似块，U、V分量使用Y分量的相似块位置信息。<br><img src="https://img-blog.csdn.net/20180719122010172?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"><br>可以仿照他转换色彩空间、从Y分量搜索相似块的方法，来对彩色图像进行降噪处理。</p>
+<h2 id="五、-VBM3D"><a href="#五、-VBM3D" class="headerlink" title="五、    VBM3D"></a>五、    VBM3D</h2><p>对于视频去噪，一是可以将视频转化为单帧图像，然后使用图像去噪算法对单帧进行处理，然后融合还原成已去噪的视频；二是根据视频前后帧信息，某个像素点，前帧没有噪声，或噪声较少，那么就可以作为后帧的值，但视频中物体是运动的，如果按前后帧的同一位置的像素处理是不合理的，因此会引入运动补偿、跟踪的算法，对于实时处理来说，条件就有点苛刻。</p>
+<p>VBM3D不含运动补偿，对中间帧的目标块搜索相似块，搜索对象是前后帧与中间帧，提出了<strong>predictive-search block-matching（PS-BM）</strong>，用于前后帧的相似块搜索。具体而言，PS-BM，先以中间帧的目标块为中心、搜索半径NS的区域寻找相似块，然后在该块对应的前后帧的位置为中心、搜索半径NPR的区域寻找相似块，中间帧、前后帧的相似块构成块集合。其余步骤与BM3D无异。<br><img src="https://img-blog.csdn.net/20180719122002358?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2dpdGh1Yl8yODI2MDE3NQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70" alt="这里写图片描述"></p>
+
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2018/08/20/2018-08-20-mathtype/" title= mathtype 6.x 版本备份 >
+                    <span>Next Post</span>
+                    <span>mathtype 6.x 版本备份</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2017/12/11/2017-12-11-usage-ubuntu_and_eclipse/" title= 在ubuntu下安装eclipse >
+                    <span>Previous Post</span>
+                    <span>在ubuntu下安装eclipse</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
+    
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
+    
+
+<!-- City版安装代码已完成 -->
+</main>
+            <!-- profile -->
+            
+        </div>
+        <footer class="footer">
+    <!-- social  -->
+    
+    <div class="social">
+        
+    
+        
+            
+                <a href="emailto:jjkjjk333@sina.com" class="iconfont-archer email" title=email ></a>
+            
+        
+    
+        
+            
+                <a href="//github.com/jjkislele" class="iconfont-archer github" target="_blank" title="github"></a>
+            
+        
+    
+        
+            
+                <a href="//weibo.com/jjkislele" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+
+    </div>
+    
+    <!-- powered by Hexo  -->
+    <div class="copyright">
+        <span id="hexo-power">Powered by <a href="https://hexo.io/" target="_blank">Hexo</a></span><span class="iconfont-archer power">&#xe635;</span>
+        <span
+            id="theme-info">Theme <a href="https://github.com/fi3ework/hexo-theme-archer" target="_blank">archer</a></span>
+    </div>
+    <!-- 不蒜子  -->
+    
+</footer>
+    </div>
+    <div class="back-top">&#xe639;</div>
+    <div class="sidebar">
+    <div class="sidebar-header">
+        <div class="sidebar-category">
+            <span class="sidebar-archive-link"><span class="iconfont-archer">&#xe67d;</span>Archive</span>
+            <span class="sidebar-tags-link"><span class="iconfont-archer">&#xe610;</span>Tag</span>
+        </div>
+    </div>
+    <div class="sidebar-content sidebar-content-show-archive">
+          <div class="sidebar-archive">
+    <!-- 在ejs中将archive按照时间排序 -->
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 19 </div>
+    
+    <div class="post-archive">
+    
+    
+    
+    
+    <div class="archive-year"> 2019 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2019/07/11/2019-07-11-usage-install-caffe/" >linux服务器端 + cuda10 + anaconda3 + py35 + opencv3 之 caffe安装</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/06</span><a class="archive-post-title" href= "/2019/07/06/2019-07-06-a-brand-new-world/" >小小的总结，又一个新的开始（上）</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2018 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/20</span><a class="archive-post-title" href= "/2018/08/20/2018-08-20-mathtype/" >mathtype 6.x 版本备份</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/18</span><a class="archive-post-title" href= "/2018/07/18/2018-07-18-review-BM3D/" >BM3D(Block-Matching and 3D filtering)读后感</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2017 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">12/11</span><a class="archive-post-title" href= "/2017/12/11/2017-12-11-usage-ubuntu_and_eclipse/" >在ubuntu下安装eclipse</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href= "/2017/11/17/2017-11-03-usage-MRT2012/" >USAGE OF Sketch-based shape retrieval</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/17</span><a class="archive-post-title" href= "/2017/11/17/2017-11-17-usage-superLU2lib/" >在win的VS2015下编译SuperLU与BLAS的动态库</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/27</span><a class="archive-post-title" href= "/2017/10/27/2017-10-27-review-SWC2016/" >review-SWC2016</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/20</span><a class="archive-post-title" href= "/2017/10/20/2017-10-20-review-JKY2014/" >review-JKY2014</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/11</span><a class="archive-post-title" href= "/2017/10/11/2017-10-11-review-MSSR2017/" >review-MSSR2017</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">09/25</span><a class="archive-post-title" href= "/2017/09/25/2017-09-25-new-blog/" >新的开始</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/10</span><a class="archive-post-title" href= "/2017/08/10/2017-08-10-goodbye-wp/" >告别</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/04</span><a class="archive-post-title" href= "/2017/08/04/2017-08-04-python-env-intro/" >Python环境的搭建</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/11</span><a class="archive-post-title" href= "/2017/07/11/2017-07-11-cpp-inline-func/" >转-Cpp内联函数</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">07/08</span><a class="archive-post-title" href= "/2017/07/08/2017-07-08-vs2015/" >转-vs2015常用快捷键</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">05/02</span><a class="archive-post-title" href= "/2017/05/02/2017-05-02-dissertation/" >毕业论文格式该咋搞？</a>
+        </li>
+    
+    
+    
+    
+    
+        </ul>
+    
+    <div class="archive-year"> 2016 </div>
+    <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">11/23</span><a class="archive-post-title" href= "/2016/11/23/2016-11-23-kaggle/" >Kaggle网站上的说明</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">10/31</span><a class="archive-post-title" href= "/2016/10/31/2016-10-31-mapreduce/" >转-MapReduce原理与设计思想</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">06/24</span><a class="archive-post-title" href= "/2016/06/24/2016-06-24-hello-world/" >世界，你好！</a>
+        </li>
+    
+    </div>
+  </div>
+        <div class="sidebar-tags">
+    <div class="sidebar-tags-name">
+    
+        <span class="sidebar-tag-name"><a href= "#">cite</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">mapreduce</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">wp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">diary</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">func</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">review</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">TOG</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">SIGIR</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">recommendation</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ICDE</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">usage</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">ubuntu</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">TIP</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">deeplearning</a></span>
+    
+    </div>
+    <div class="tag-load-fail" style="display: none; color: #ccc; font-size: 0.6rem;">
+    缺失模块。<br/>
+    1、请确保node版本大于6.2<br/>
+    2、在博客根目录（注意不是archer根目录）执行以下命令：<br/>
+    <span style="color: #f75357; font-size: 1rem; line-height: 2rem;">npm i hexo-generator-json-content --save</span><br/>
+    3、在根目录_config.yml里添加配置：
+    <pre style="color: #888; font-size: 0.6rem;">
+jsonContent:
+  meta: false
+  pages: false
+  posts:
+    title: true
+    date: true
+    path: true
+    text: false
+    raw: false
+    content: false
+    slug: false
+    updated: false
+    comments: false
+    link: false
+    permalink: false
+    excerpt: false
+    categories: false
+    tags: true</pre>
+    </div> 
+    <div class="sidebar-tag-list"></div>
+</div>
+    </div>
+</div> 
+    <script>
+    var jsInfo = {
+        root: '/'
+    }
+</script>
+    <!-- 不蒜子  -->
+    
+    <!-- CNZZ统计  -->
+    
+    </div>
+    </body>
+</html>
+
+
