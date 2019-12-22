@@ -116,6 +116,79 @@
     
     
         <article class="index-post">
+            <a class="content-show-full" href = "/2019/08/22/2019-08-22-usage-pycharm-ssh/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>pycharm + ssh 跳板机 + 服务器</span>
+                    </h2>
+                <div class="abstract-content">
+                    pycharm + ssh 跳板机 + 服务器场景在内网的本地通过在外网的跳板机(堡垒机)连接外网的服务器，希望调试、同步修改代码，避免出现: 使用pdb、print大法，本地修改代码再上传至服务器、出现bug再从服务器拉取下来，这些严重影响调试速度的情况。
+步骤1. ssh免密登录参考: https://zhuanlan.zhihu.com/p/53792195，在本地的``C:\Users\.ssh的文件夹下建立config文件(.ssh文件夹没有，就新建个)，然后在config``里面输入如下代码: 
+12345678910Host &lt;jump&gt;    HostName...
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = ubuntu>ubuntu</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/08/22</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
+            <a class="content-show-full" href = "/2019/08/13/2019-08-13-usage-install-zip-unzip/" >
+                    <h2 class="abstract-title">
+                        
+                        <span>linux 源码安装 zip/unzip</span>
+                    </h2>
+                <div class="abstract-content">
+                    linux 源码安装 zip/unzip场景说明
+Linux服务器，没有root权限
+需要使用zip/unzip，但遗憾的是服务器没有安装
+
+解决办法自己用源码编译
+步骤
+下载zip/unzip的源码包 -&gt; 工具主页 Info-ZIP实际上主页的下载地址过期了 -&gt; 真下载主页 sourceforge
+tar解压
+到解压好的文件夹里，把./unix/Makefile拷到根目录.下，用make generic安装即可。
+
+过程
+下载unzip60.tar.gz1wget http://downloads.sourceforge.net/infozip/unzip60.tar....
+                </div>
+            </a>
+            <div class="abstract-post-meta">
+                <!-- tags  -->
+                
+                <div class= abstract-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = ubuntu>ubuntu</a>
+    
+</div>
+                
+                <!-- date  -->
+                <div class="abstract-date">
+                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2019/08/13</span>
+                </div>
+            </div>
+        </article>
+    
+    
+    
+        <article class="index-post">
             <a class="content-show-full" href = "/2019/07/11/2019-07-11-usage-install-caffe/" >
                     <h2 class="abstract-title">
                         
@@ -397,76 +470,10 @@ Wu S, Ren W, Yu C, et al. Personal recommendation using deep recurrent neural ne
             </div>
         </article>
     
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/20/2017-10-20-review-JKY2014/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>review-JKY2014</span>
-                    </h2>
-                <div class="abstract-content">
-                    New and Improved Modeling Versions to Improve APP Recommendation
-Lin J, Sugiyama K, Kan M Y, et al. New and improved: modeling versions to improve app recommendation[C]// International ACM SIGIR Conference on Research &amp; Development in Information Retrieval. ACM, 2014:647-656.
-
-主题本文建立了一个新型的软件推...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = SIGIR>SIGIR</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = recommendation>recommendation</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/20</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/10/11/2017-10-11-review-MSSR2017/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>review-MSSR2017</span>
-                    </h2>
-                <div class="abstract-content">
-                    VNect: Real-time 3D Human Pose Estimation with a Single RGB Camera
-Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad Shafiei, Hans-Peter Seidel, Weipeng Xu, Dan Casas, and Christian Theobalt. 2017. VNect: real-time 3D human pose estimation with a single RGB camera. AC...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = review>review</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = TOG>TOG</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/10/11</span>
-                </div>
-            </div>
-        </article>
-    
     <!-- paginator  -->
     
     <nav class="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">#NEXT</a>
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">#NEXT</a>
     </nav>
     
 </main>
@@ -499,6 +506,12 @@ Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad S
         
             
                 <a href="//weibo.com/jjkislele" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+        
+            
+                <a href="//blog.csdn.net/github_28260175" class="iconfont-archer csdn" target="_blank" title="csdn"></a>
             
         
     
@@ -562,6 +575,12 @@ Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad S
         
             
                 <a href="//weibo.com/jjkislele" class="iconfont-archer weibo" target="_blank" title="weibo"></a>
+            
+        
+    
+        
+            
+                <a href="//blog.csdn.net/github_28260175" class="iconfont-archer csdn" target="_blank" title="csdn"></a>
             
         
     
@@ -780,7 +799,21 @@ Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad S
     
     
     
-    <div class="total-archive"> Total : 19 </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <div class="total-archive"> Total : 21 </div>
     
     <div class="post-archive">
     
@@ -789,6 +822,16 @@ Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad S
     
     <div class="archive-year"> 2019 </div>
     <ul class="year-list">
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/22</span><a class="archive-post-title" href= "/2019/08/22/2019-08-22-usage-pycharm-ssh/" >pycharm + ssh 跳板机 + 服务器</a>
+        </li>
+    
+    
+        <li class="archive-post-item">
+            <span class="archive-post-date">08/13</span><a class="archive-post-title" href= "/2019/08/13/2019-08-13-usage-install-zip-unzip/" >linux 源码安装 zip/unzip</a>
+        </li>
     
     
         <li class="archive-post-item">
@@ -917,27 +960,27 @@ Dushyant Mehta, Srinath Sridhar, Oleksandr Sotnychenko, Helge Rhodin, Mohammad S
         <div class="sidebar-tags">
     <div class="sidebar-tags-name">
     
+        <span class="sidebar-tag-name"><a href= "#">diary</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">wp</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
+    
         <span class="sidebar-tag-name"><a href= "#">cite</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">algorithm</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">mapreduce</a></span>
     
-        <span class="sidebar-tag-name"><a href= "#">wp</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">diary</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">intro</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">paper</a></span>
-    
         <span class="sidebar-tag-name"><a href= "#">kaggle</a></span>
-    
-        <span class="sidebar-tag-name"><a href= "#">python</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">cpp</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">func</a></span>
+    
+        <span class="sidebar-tag-name"><a href= "#">python</a></span>
     
         <span class="sidebar-tag-name"><a href= "#">review</a></span>
     

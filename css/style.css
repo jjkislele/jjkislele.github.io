@@ -610,12 +610,12 @@ ul,li {
 	color: #0f88eb
 }
 
-.profile-social .blog::before {
+.profile-social .csdn::before {
 	font-size: 1.1rem;
 	content: "\e60c"
 }
 
-.profile-social .blog:hover::before {
+.profile-social .csdn:hover::before {
 	color: #708090
 }
 

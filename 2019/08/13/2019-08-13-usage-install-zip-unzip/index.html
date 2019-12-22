@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Jiang&#39;s Blog
+        linux 源码安装 zip/unzip · Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">linux 源码安装 zip/unzip</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Jiang's Blog.</a>
 </header>
@@ -80,97 +91,117 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            linux 源码安装 zip/unzip
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = ubuntu>ubuntu</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/08/13</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/17/2017-11-17-usage-superLU2lib/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>在win的VS2015下编译SuperLU与BLAS的动态库</span>
-                    </h2>
-                <div class="abstract-content">
-                    在win的VS2015下编译SuperLU与BLAS的动态库NOTICE 本文是在window8.1环境下使用VS2015编译SuperLU与BLAS的动态库（因为最近有个项目依赖SuperLU和BLAS），本文将会说明编译动态库的详细过程，以及编译过程中遇到的错误，还有为了跳过错误而做的修改，SuperLU与BLAS的原理本文一概不知，实在抱歉。在下面的相关阅读里面，有我参考的资料，实际上也没什么帮助，因为生成动态库也就那几步，不过还是在此表示感谢。
-相关阅读
-SuperLU使用总结
-编译SuperLU虽然本链接已经无法访问了。
-编译1.下载源码百度SuperLU点第一个就可以了，这里...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = cpp>cpp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/17</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/17/2017-11-03-usage-MRT2012/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>USAGE OF Sketch-based shape retrieval</span>
-                    </h2>
-                <div class="abstract-content">
-                    大佬的项目如何去使用？
-Eitz M, Richter R, Boubekeur T, et al. Sketch-based shape retrieval[J]. Acm Transactions on Graphics, 2012, 31(4):1-10.
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="linux-源码安装-zip-unzip"><a href="#linux-源码安装-zip-unzip" class="headerlink" title="linux 源码安装 zip/unzip"></a>linux 源码安装 zip/unzip</h1><h2 id="场景说明"><a href="#场景说明" class="headerlink" title="场景说明"></a>场景说明</h2><ol>
+<li>Linux服务器，没有root权限</li>
+<li>需要使用zip/unzip，但遗憾的是服务器没有安装</li>
+</ol>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>自己用源码编译</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><ol>
+<li>下载zip/unzip的源码包 -&gt; 工具主页 <a href="http://infozip.sourceforge.net/Info-ZIP.html" target="_blank" rel="external">Info-ZIP</a><br>实际上主页的下载地址过期了 -&gt; 真下载主页 <a href="https://sourceforge.net/projects/infozip/" target="_blank" rel="external">sourceforge</a></li>
+<li>tar解压</li>
+<li>到解压好的文件夹里，把<code>./unix/Makefile</code>拷到根目录<code>.</code>下，用<code>make generic</code>安装即可。</li>
+</ol>
+<h2 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h2><ol>
+<li>下载unzip60.tar.gz<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget http://downloads.sourceforge.net/infozip/unzip60.tar.gz</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget https://nchc.dl.sourceforge.net/project/infozip/UnZip 6.x %28latest%29/UnZip 6.0/unzip60.tar.gz</div></pre></td></tr></table></figure></p>
+<ol>
+<li><p>解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tar xzvf unzip60.tar.gz</div></pre></td></tr></table></figure>
+</li>
+<li><p>安装</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">cp ./unix/Makefile .</div><div class="line">make clean</div><div class="line">make generic</div></pre></td></tr></table></figure>
+</li>
+<li><p>验证是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zip</div><div class="line">unzip</div></pre></td></tr></table></figure></li>
+</ol>
 
-Note: 本文旨在说明大佬项目编译后产生的命令行窗口程序的使用方法，如何编译大佬的源码，将在下篇文章详细说明。
-What’s this?This project is forked from mathiaseitz’s imdb_framework which I am interested in.
-Whole code i...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+            <li class="next">
+                <a href= "/2019/08/22/2019-08-22-usage-pycharm-ssh/" title= pycharm + ssh 跳板机 + 服务器 >
+                    <span>Next Post</span>
+                    <span>pycharm + ssh 跳板机 + 服务器</span>
+                </a>
+            </li>
+        
+        
+            <li class="previous">
+                <a href= "/2019/07/11/2019-07-11-usage-install-caffe/" title= linux服务器端 + cuda10 + anaconda3 + py35 + opencv3 之 caffe安装 >
+                    <span>Previous Post</span>
+                    <span>linux服务器端 + cuda10 + anaconda3 + py35 + opencv3 之 caffe安装</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
     
-        <a class="post-tag" href="javascript:void(0);" data-href = TOG>TOG</a>
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
     
-        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/17</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+
+<!-- City版安装代码已完成 -->
 </main>
             <!-- profile -->
             

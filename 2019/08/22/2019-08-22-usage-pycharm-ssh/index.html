@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
     <title>
         
-        Jiang&#39;s Blog
+        pycharm + ssh 跳板机 + 服务器 · Jiang&#39;s Blog
         
     </title>
     <link rel="icon" href= /assests/favicon.ico>
@@ -68,11 +68,22 @@
     
 </head>
     
+        <body class="post-body">
+    
     
 <header class="header">
 
     <div class="header-sidebar-menu">&#xe775;</div>
     <!-- post页的toggle banner  -->
+    
+    <div class="banner">
+            <div class="blog-title">
+                <a href="/" >Jiang&#39;s Blog.</a>
+            </div>
+            <div class="post-title">
+                <a href="#" class="post-name">pycharm + ssh 跳板机 + 服务器</a>
+            </div>
+    </div>
     
     <a class="home-link" href=/>Jiang's Blog.</a>
 </header>
@@ -80,97 +91,101 @@
         <div class="site-intro">
     
     <!-- 主页  -->
+    
+    
+    <!-- 404页  -->
             
-    <div class="site-intro-img" style="background-image: url(/)"></div>
+    <div class="site-intro-img" style="background-image: url(/intro/post-bg.jpg)"></div>
     <div class="site-intro-placeholder"></div>
     <div class="site-intro-meta">
         <!-- 标题  -->
         <h1 class="intro-title">
             <!-- 主页  -->
             
+            pycharm + ssh 跳板机 + 服务器
+            <!-- 404 -->
+            
         </h1>
         <!-- 副标题 -->
         <p class="intro-subtitle">
             <!-- 主页副标题  -->
             
+            
+        </p>
+        <!-- 404 -->
+        
         <!-- 文章页meta -->
+        
+            <!-- 文章页标签  -->
+            
+                <div class= post-intro-tags >
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
+    
+        <a class="post-tag" href="javascript:void(0);" data-href = ubuntu>ubuntu</a>
+    
+</div>
+            
+            <div class="post-intro-meta">
+                <span class="post-intro-calander iconfont-archer">&#xe676;</span>
+                <span class="post-intro-time">2019/08/22</span>
+            </div>
         
     </div>
 </div>
         <div class="container">
-            <main class="main index-page">
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/17/2017-11-17-usage-superLU2lib/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>在win的VS2015下编译SuperLU与BLAS的动态库</span>
-                    </h2>
-                <div class="abstract-content">
-                    在win的VS2015下编译SuperLU与BLAS的动态库NOTICE 本文是在window8.1环境下使用VS2015编译SuperLU与BLAS的动态库（因为最近有个项目依赖SuperLU和BLAS），本文将会说明编译动态库的详细过程，以及编译过程中遇到的错误，还有为了跳过错误而做的修改，SuperLU与BLAS的原理本文一概不知，实在抱歉。在下面的相关阅读里面，有我参考的资料，实际上也没什么帮助，因为生成动态库也就那几步，不过还是在此表示感谢。
-相关阅读
-SuperLU使用总结
-编译SuperLU虽然本链接已经无法访问了。
-编译1.下载源码百度SuperLU点第一个就可以了，这里...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = cpp>cpp</a>
-    
-        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/17</span>
-                </div>
-            </div>
-        </article>
-    
-    
-    
-        <article class="index-post">
-            <a class="content-show-full" href = "/2017/11/17/2017-11-03-usage-MRT2012/" >
-                    <h2 class="abstract-title">
-                        
-                        <span>USAGE OF Sketch-based shape retrieval</span>
-                    </h2>
-                <div class="abstract-content">
-                    大佬的项目如何去使用？
-Eitz M, Richter R, Boubekeur T, et al. Sketch-based shape retrieval[J]. Acm Transactions on Graphics, 2012, 31(4):1-10.
+            <main class="main post-page">
+    <article class="article-entry">
+        <h1 id="pycharm-ssh-跳板机-服务器"><a href="#pycharm-ssh-跳板机-服务器" class="headerlink" title="pycharm + ssh 跳板机 + 服务器"></a>pycharm + ssh 跳板机 + 服务器</h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>在内网的本地通过在外网的跳板机(堡垒机)连接外网的服务器，希望调试、同步修改代码，避免出现: 使用pdb、print大法，本地修改代码再上传至服务器、出现bug再从服务器拉取下来，这些严重影响调试速度的情况。</p>
+<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="1-ssh免密登录"><a href="#1-ssh免密登录" class="headerlink" title="1. ssh免密登录"></a>1. ssh免密登录</h3><p>参考: <a href="https://zhuanlan.zhihu.com/p/53792195，在本地的``C:\Users\" target="_blank" rel="external">https://zhuanlan.zhihu.com/p/53792195，在本地的``C:\Users\</a><administrator>.ssh<code>的文件夹下建立</code>config<code>文件(</code>.ssh<code>文件夹没有，就新建个)，然后在</code>config``里面输入如下代码: </administrator></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">Host &lt;jump&gt;</div><div class="line">    HostName &lt;x1.x1.x1.x1&gt;</div><div class="line">    User &lt;xxx&gt;</div><div class="line">    Port &lt;xxx&gt;</div><div class="line"></div><div class="line">Host &lt;remote&gt;</div><div class="line">    HostName &lt;x2.x2.x2.x2&gt;</div><div class="line">    User &lt;xxx&gt;</div><div class="line">    Port &lt;xxx&gt;</div><div class="line">    ProxyCommand ssh -q -W %h:%p &lt;local&gt;</div></pre></td></tr></table></figure>
+<p>这里的<code>&lt;jump&gt;</code>是指跳板机，你可以改成喜欢的名字，<code>&lt;x1.x1.x1.x1&gt;</code>是跳板机的ip，<code>User</code>、<code>Port</code>都是登录跳板机的所提供的参数(注意不是随便填个22就完事的哦)；<code>&lt;remote&gt;</code>指服务器，也是命名而已，可以随便改，<code>&lt;x2.x2.x2.x2&gt;</code>是服务器的ip，<code>User</code>、<code>Port</code>都是从跳板机登录服务器所提供的参数。把本地登录跳板机的秘钥都放到<code>.ssh</code>文件夹中，如下图所示。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190822120157272.png" alt="在这里插入图片描述"></p>
+<p>然后在本地的<code>shell</code>(注意是<code>shell</code>不是windows的<code>cmd</code>，win的<code>powershell</code>或许也可以，没试过)，尝试<code>ssh &lt;jump&gt;</code>，如果登录成功，说明<code>本地 -&gt; 跳板机</code>的ssh隧道免密登录已经弄好了，接着是<code>跳板机 -&gt; 服务器</code>的ssh免密登录，方法同本地一致:<code>vim ~/.ssh/config</code>，如果在跳板机上直接<code>go &lt;x2.x2.x2.x2&gt;</code>，那么恭喜你，<code>本地 -&gt; 跳板机</code>的ssh隧道也搭建好了，不用再重新搭建了。</p>
+<p><img src="https://img-blog.csdnimg.cn/20190822120412665.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190822120656286.png" alt="在这里插入图片描述"></p>
+<h3 id="2-隧道转发"><a href="#2-隧道转发" class="headerlink" title="2. 隧道转发"></a>2. 隧道转发</h3><p>参考: <a href="https://blog.csdn.net/qq_33039859/article/details/89503464的第7、8条，在shell里输入如下指令，进行ssh转发" target="_blank" rel="external">https://blog.csdn.net/qq_33039859/article/details/89503464的第7、8条，在shell里输入如下指令，进行ssh转发</a>:</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -N -f -L &lt;转发至本地的端口号, 随便起, 这里我是6000&gt;:&lt;x2.x2.x2.x2, 服务器ip&gt;:&lt;服务器端口&gt; -p &lt;跳板机端口&gt; &lt;登录跳板机的用户名&gt;@&lt;x1.x1.x1.x1, 跳板机ip&gt; -o TCPKeepAlive=yes</div></pre></td></tr></table></figure>
+<h3 id="3-pycharm的dev环境、解释器配置"><a href="#3-pycharm的dev环境、解释器配置" class="headerlink" title="3. pycharm的dev环境、解释器配置"></a>3. pycharm的dev环境、解释器配置</h3><p><strong>注意</strong> pycharm必须是Professional版才行</p>
+<ul>
+<li>dev环境<br><img src="https://img-blog.csdnimg.cn/20190822121442578.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9qamtpc2xlbGUuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190822121454837.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9qamtpc2xlbGUuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>这里的ip是localhost，因为使用了ssh转发到了localhost的6000端口，按图填就好。</li>
+<li>解释器<br><img src="https://img-blog.csdnimg.cn/20190822121502809.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9qamtpc2xlbGUuYmxvZy5jc2RuLm5ldA==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>可以create或者move，视情况而定。</li>
+<li>检查下<br><img src="https://img-blog.csdnimg.cn/20190822121426847.png" alt="在这里插入图片描述"><br>终于可以开心的调试了~</li>
+</ul>
+<h2 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h2><p><del>项目得全部下载后才可以调试，如果模型也放在项目文件里的话，一个模型也就1、2g吧，那这个下载同步就是灾难性的，项目初始化会是很慢很慢的。<br><img src="https://img-blog.csdnimg.cn/20190822121950768.png" alt="在这里插入图片描述"><br>所以有些时候，我用<code>jupyter notebook</code>来修改远程代码，这样要方便一些。</del><br>上述有误，实际上根本不用把整个项目都dump下来，可以按需dump对应代码。另外用<code>jupyter notebook</code>可以看看输出的图像，这点还是蛮方便的，现在我是全程用pycharm调试。</p>
 
-Note: 本文旨在说明大佬项目编译后产生的命令行窗口程序的使用方法，如何编译大佬的源码，将在下篇文章详细说明。
-What’s this?This project is forked from mathiaseitz’s imdb_framework which I am interested in.
-Whole code i...
-                </div>
-            </a>
-            <div class="abstract-post-meta">
-                <!-- tags  -->
-                
-                <div class= abstract-tags >
+    </article>
+    <!-- 前后页  -->
+    <ul class="post-pager">
+        
+        
+            <li class="previous">
+                <a href= "/2019/08/13/2019-08-13-usage-install-zip-unzip/" title= linux 源码安装 zip/unzip >
+                    <span>Previous Post</span>
+                    <span>linux 源码安装 zip/unzip</span>
+                </a>
+            </li>
+        
+    </ul>
+    <!-- 来必力City版安装代码 -->
+
     
-        <a class="post-tag" href="javascript:void(0);" data-href = TOG>TOG</a>
+    <div id="lv-container" data-id="city" data-uid= MTAyMC8zMTAxNi83NTY1>
+        <script type="text/javascript">
+            (function (d, s) {
+                var j, e = d.getElementsByTagName(s)[0];
+                if (typeof LivereTower === 'function') { return; }
+                j = d.createElement(s);
+                j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+                j.async = true;
+
+                e.parentNode.insertBefore(j, e);
+            })(document, 'script');
+        </script>
+        <noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+    </div>
     
-        <a class="post-tag" href="javascript:void(0);" data-href = usage>usage</a>
-    
-</div>
-                
-                <!-- date  -->
-                <div class="abstract-date">
-                    <span class="abstract-calander iconfont-archer"></span><span class="abstract-time">2017/11/17</span>
-                </div>
-            </div>
-        </article>
-    
-    <!-- paginator  -->
-    
+
+<!-- City版安装代码已完成 -->
 </main>
             <!-- profile -->
             
