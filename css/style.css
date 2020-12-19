@@ -1595,6 +1595,14 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 	font-size: 1rem
 }
 
+.project-page {
+	width: 70%;
+}
+
+.project-body .site-intro-meta {
+	margin-left:-30%;
+}
+
 .post-body main,.about-body main {
 	margin: 0
 }
