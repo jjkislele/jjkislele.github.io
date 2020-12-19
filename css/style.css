@@ -1245,7 +1245,7 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 
 .sidebar-archive {
 	padding: 1rem;
-	width: calc(50% - 2rem)
+	width: calc(33% - 2rem)
 }
 
 .sidebar-archive ul {
@@ -1297,7 +1297,7 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 
 .sidebar-tags {
 	padding: 1rem;
-	width: calc(50% - 2rem);
+	width: calc(33% - 2rem);
 	position: relative;
 	display: flex;
 	flex-direction: column
@@ -1367,7 +1367,7 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 	width: 100%;
 	z-index: 1001;
 	display: flex;
-	height: 8rem;
+	height: 12rem;
 	justify-content: space-between;
 	align-items: center;
 	border-top: 3px solid #fff;
@@ -1377,7 +1377,7 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 .sidebar-header::after {
 	content: '';
 	position: absolute;
-	height: calc(50% - 2px);
+	height: calc(33% - 2px);
 	width: 2px;
 	top: 0;
 	left: calc(100% - 2px);
@@ -1397,7 +1397,7 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 	color: #fff
 }
 
-.sidebar-archive-link,.sidebar-tags-link {
+.sidebar-archive-link,.sidebar-tags-link,.sidebar-about-link {
 	display: flex;
 	align-items: center;
 	justify-content: flex-start;
@@ -1408,12 +1408,12 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 	border-bottom: 2px solid #666
 }
 
-.sidebar-archive-link span,.sidebar-tags-link span {
+.sidebar-archive-link span,.sidebar-tags-link span,.sidebar-about-link span {
 	font-size: 2rem;
 	margin: 0 0.8rem 0 1.2rem
 }
 
-.sidebar-tags-link span {
+.sidebar-tags-link span,.sidebar-about-link span {
 	transform: translateY(10%)
 }
 
@@ -1422,16 +1422,21 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 }
 
 .sidebar-header-show-tags::after {
-	height: calc(50% - 2px);
-	transform: translate3d(0, calc(100% + 2px), 0)
+	height: calc(33% - 2px);
+	transform: translate3d(0, calc(100% + 4px), 0)
+}
+
+.sidebar-header-show-about::after {
+	height: calc(33% - 2px);
+	transform: translate3d(0, calc(200% + 6px), 0)
 }
 
 .sidebar-content {
 	position: relative;
-	margin-top: 8rem;
+	margin-top: 12rem;
 	display: flex;
-	width: 200%;
-	height: calc(100% - 8rem);
+	width: 300%;
+	height: calc(100% - 12rem);
 	top: 0;
 	left: 0;
 	transition: all 0.2s ease-out .0s;
@@ -1454,7 +1459,11 @@ html::-webkit-scrollbar-track:hover,.sidebar-archive::-webkit-scrollbar-track:ho
 }
 
 .sidebar-content-show-tags {
-	transform: translate3d(-50%, 0, 0)
+	transform: translate3d(-33%, 0, 0)
+}
+
+.sidebar-content-show-about {
+	transform: translate3d(-66%, 0, 0)
 }
 
 .sidebar.sidebar-show {
