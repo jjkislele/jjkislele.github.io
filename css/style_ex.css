@@ -1,0 +1,15 @@
+.index-header .navbar-item {
+    font-family: "Oswald-Regular", "Microsoft Yahei", "Source Sans Pro", Arial, sans-serif;
+    color: #fff;
+}
+
+@media screen and (min-width: 1024px) {
+    .navbar-dropdown {
+        background-color: hsla(0, 0%, 48%, 0.9);
+        border-top: 0px;
+    }
+}
+
+.pages-body .index-header {
+    overflow:visible;
+}
